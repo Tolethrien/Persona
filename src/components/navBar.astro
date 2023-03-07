@@ -30,6 +30,7 @@ const pageLinks: pageLinksType = {
 </div>
 
 <style lang="scss">
+  @import "../styles/vars";
   .Nav {
     position: relative;
     padding-block: 1rem;
@@ -41,10 +42,15 @@ const pageLinks: pageLinksType = {
       width: 15rem;
       height: 15rem;
       z-index: -1;
-      @media (max-width: 550px) {
-        opacity: 0.4;
-        width: 10rem;
-        height: 10rem;
+      @media (max-width: $smallScreen) {
+        opacity: $branchesOpacity;
+        width: 8rem;
+        height: 8rem;
+      }
+      @media (max-width: $midScreen) and (min-width: $smallScreen) {
+        // opacity: $branchesOpacity;
+        width: 12rem;
+        height: 12rem;
       }
     }
     button {
@@ -60,7 +66,7 @@ const pageLinks: pageLinksType = {
       background-repeat: no-repeat;
       background-position: center;
       transition: 0.4s;
-      @media (max-width: 550px) {
+      @media (max-width: $smallScreen) {
         display: flex;
       }
     }
@@ -71,7 +77,7 @@ const pageLinks: pageLinksType = {
       font-weight: 600;
       font-size: 1.5rem;
       padding-right: 3rem;
-      @media (max-width: 550px) {
+      @media (max-width: $smallScreen) {
         display: none;
         animation: showUp 2s;
         @keyframes showUp {
@@ -83,21 +89,22 @@ const pageLinks: pageLinksType = {
           }
         }
       }
-      @media (min-width: 1000px) {
+
+      @media (min-width: $midScreen) {
         gap: 2rem;
         padding-right: 5rem;
         font-size: 2rem;
       }
 
       a {
-        color: hsla(226, 19%, 60%, 1);
+        color: $primaryColor;
         text-decoration: none;
         &:hover {
-          color: hsla(226, 19%, 80%, 1);
+          color: $secondaryColor;
         }
       }
       .active {
-        color: hsla(226, 19%, 80%, 1);
+        color: $secondaryColor;
         position: relative;
         &::after {
           content: "";
@@ -116,7 +123,7 @@ const pageLinks: pageLinksType = {
     }
 
     .expended {
-      @media (max-width: 550px) {
+      @media (max-width: $smallScreen) {
         display: flex;
         flex-direction: column;
         justify-content: center;

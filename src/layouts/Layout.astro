@@ -5,6 +5,7 @@ interface Props {
 import NavBar from "../components/navBar.astro";
 import "../styles/globalStyle.astro";
 import "@fontsource/roboto";
+import BodyBranch from "../svg/secBranch.svg";
 const { pageName } = Astro.props;
 ---
 
@@ -14,19 +15,39 @@ const { pageName } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="My personal page" />
     <title>{pageName}</title>
   </head>
   <body>
+    <img alt="" src={BodyBranch} id="bodyBranch" />
     <NavBar />
     <slot />
   </body>
-  <style>
+  <style lang="scss">
+    @import "../styles/vars";
+
     body {
-      background: linear-gradient(109.61deg, #0a192f 0%, #0d1521 100.87%);
-      height: 100svh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
       margin-inline: auto;
-      max-width: 1800px;
+      height: 100svh;
+      max-width: $maxScreen;
+      background: $appBackground;
       overflow-x: hidden;
+      #bodyBranch {
+        position: absolute;
+        right: -1rem;
+        top: 40%;
+        width: 25rem;
+        height: 25rem;
+        z-index: -1;
+        opacity: $branchesOpacity;
+        @media (max-width: $smallScreen) {
+          left: -1rem;
+          transform: scaleX(-1);
+        }
+      }
     }
   </style>
 </html>

@@ -1,0 +1,70 @@
+---
+import Category from "./category.astro";
+import Description from "./description.astro";
+---
+
+<section class="mainSection">
+  <Category />
+  <div class="content">
+    <h2>Ready Projects</h2>
+    <Description class="descDesktop" />
+    <slot />
+  </div>
+</section>
+<style lang="scss">
+  @import "../styles/vars";
+
+  .mainSection {
+    display: flex;
+    gap: 2rem;
+    flex-grow: 1;
+    @media (max-width: $smallScreen) {
+      flex-flow: row-reverse;
+    }
+
+    .content {
+      position: relative;
+      flex-grow: 1;
+      border-width: 5px;
+      border-style: solid;
+      padding: 1rem;
+      border-image: linear-gradient(
+          135deg,
+          hsla(226, 19%, 60%, 1) 0%,
+          rgba(250, 225, 66, 0) 30%
+        )
+        1;
+
+      @media (min-width: $smallScreen) {
+        &::after {
+          content: "";
+          width: 3rem;
+          height: 3rem;
+          position: absolute;
+          top: -3rem;
+          left: 0;
+          background-image: url("./src/svg/monke.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          filter: brightness(70%);
+        }
+        margin-top: 4rem;
+      }
+      h2 {
+        color: $secondaryColor;
+        font-size: 2.2rem;
+        font-weight: 600;
+        @media (max-width: $smallScreen) {
+          font-size: 1.8rem;
+          text-align: center;
+        }
+      }
+    }
+    .descDesktop {
+      @media (max-width: $smallScreen) {
+        display: none;
+      }
+    }
+  }
+</style>
