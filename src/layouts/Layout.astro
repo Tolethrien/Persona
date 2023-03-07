@@ -5,7 +5,6 @@ interface Props {
 import NavBar from "../components/navBar.astro";
 import "../styles/globalStyle.astro";
 import "@fontsource/roboto";
-import BodyBranch from "../svg/secBranch.svg";
 const { pageName } = Astro.props;
 ---
 
@@ -19,7 +18,7 @@ const { pageName } = Astro.props;
     <title>{pageName}</title>
   </head>
   <body>
-    <img alt="" src={BodyBranch} id="bodyBranch" />
+    <img alt="" src="/svg/secBranch.svg" id="bodyBranch" />
     <NavBar />
     <slot />
   </body>
