@@ -18,7 +18,7 @@ const { pageName } = Astro.props;
     <title>{pageName}</title>
   </head>
   <body>
-    <img alt="" src="/svg/secBranch.svg" id="bodyBranch" />
+    <img alt="" src="/secBranch.svg" id="bodyBranch" />
     <NavBar />
     <slot />
   </body>
@@ -40,7 +40,7 @@ const { pageName } = Astro.props;
         top: 40%;
         width: 25rem;
         height: 25rem;
-        z-index: -1;
+        // z-index: -1;
         opacity: $branchesOpacity;
         @media (max-width: $smallScreen) {
           left: -1rem;
