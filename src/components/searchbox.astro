@@ -1,5 +1,4 @@
 ---
-import Loop from "../svg/Loop.svg";
 const { class: className } = Astro.props;
 ---
 
@@ -17,9 +16,11 @@ const { class: className } = Astro.props;
     flex-wrap: nowrap;
     gap: 0.4rem;
     @media (min-width: $smallScreen) {
-      padding-top: 5rem;
+      margin-top: -5rem;
     }
-
+    img {
+      pointer-events: none;
+    }
     input {
       background: none;
       border: none;
@@ -29,6 +30,8 @@ const { class: className } = Astro.props;
       width: 10rem;
       padding-block: 0.5rem;
       color: wheat;
+      transition: 0.5s;
+
       @media (max-width: $midScreen) {
         font-size: 1.2rem;
         width: 8rem;

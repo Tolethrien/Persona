@@ -39,6 +39,8 @@ const pageLinks: pageLinksType = {
       top: 0;
       width: 15rem;
       height: 15rem;
+      pointer-events: none;
+      transition: 1s;
       // z-index: -1;
       @media (max-width: $smallScreen) {
         opacity: $branchesOpacity;
@@ -97,6 +99,7 @@ const pageLinks: pageLinksType = {
       a {
         color: $primaryColor;
         text-decoration: none;
+        transition: 1s;
         &:hover {
           color: $secondaryColor;
         }
