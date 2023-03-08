@@ -1,31 +1,8 @@
 ---
-import Description from "../components/description.astro";
-import Searchbox from "../components/searchbox.astro";
-import Section from "../components/section.astro";
+import ProjectsReactSection from "../components/react/projectSectionReact/projectSectionReact";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout pageName="Projects">
-  <div class="mobileTopBar">
-    <Searchbox />
-    <Description />
-  </div>
-  <Section />
+  <ProjectsReactSection client:load />
 </Layout>
-<style lang="scss">
-  @import "../styles/vars";
-
-  .mobileTopBar {
-    width: 80%;
-    padding-left: 1rem;
-    margin-block: 2rem 1rem;
-    gap: 0.5rem;
-    & > * {
-      margin-block: 0.5rem;
-    }
-
-    @media (min-width: $smallScreen) {
-      display: none;
-    }
-  }
-</style>

@@ -1,0 +1,56 @@
+@import "../../../styles/vars";
+
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+  margin-inline: 1rem;
+  .searchboxWrap {
+    @media (max-width: $smallScreen) {
+      display: none;
+    }
+  }
+  .categoryButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+
+    @media (max-width: $smallScreen) {
+      margin-block: 3rem;
+    }
+    img {
+      position: absolute;
+      width: 6rem;
+      height: 2rem;
+      right: -4rem;
+      top: 50%;
+      transform: translateY(-80%);
+      pointer-events: none;
+      @media (min-width: $smallScreen) {
+        display: none;
+      }
+    }
+  }
+  button {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    font-weight: 600;
+    width: fit-content;
+    color: hsla(226, 19%, 60%, 1);
+    cursor: pointer;
+    p {
+      transition: 0.5s;
+      @media (max-width: $smallScreen) {
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        font-size: 1rem;
+      }
+      @media (max-width: $midScreen) and (min-width: $smallScreen) {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

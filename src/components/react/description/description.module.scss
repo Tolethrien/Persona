@@ -1,0 +1,17 @@
+@import "../../../styles/vars.scss";
+.desc {
+  p {
+    color: $secondaryColor;
+    font-size: 1.3rem;
+    font-weight: 500;
+
+    @media (max-width: $smallScreen) {
+      font-size: 1rem;
+    }
+  }
+}
+.descDesktop {
+  @media (max-width: $smallScreen) {
+    display: none;
+  }
+}
