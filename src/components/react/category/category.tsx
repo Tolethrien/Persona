@@ -1,23 +1,49 @@
 import SearchBox from "../searchbox/searchBox";
 import styles from "./category.module.scss";
-interface CategoryProps {}
-const Category: React.FC<CategoryProps> = (props) => {
+interface CategoryProps {
+  currentDisplay: string;
+  setCurrentDisplay: React.Dispatch<React.SetStateAction<string>>;
+  searchValue: string;
+  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+}
+const Category: React.FC<CategoryProps> = ({
+  setCurrentDisplay,
+  currentDisplay,
+  searchValue,
+  setSearchValue,
+}) => {
   return (
     <div className={styles.category}>
       <div className={styles.searchboxWrap}>
-        <SearchBox />
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className={styles.categoryButtons}>
         <button
           onClick={() => {
-            console.log("prod");
+            setCurrentDisplay("Production");
           }}
         >
-          <p>Production</p>
+          <p
+            className={
+              currentDisplay === "Production" ? styles.isSelected : undefined
+            }
+          >
+            Production
+          </p>
         </button>
         <img alt="" src="/underlineBranch.svg" />
-        <button>
-          <p>Development</p>
+        <button
+          onClick={() => {
+            setCurrentDisplay("Development");
+          }}
+        >
+          <p
+            className={
+              currentDisplay === "Development" ? styles.isSelected : undefined
+            }
+          >
+            Development
+          </p>
         </button>
       </div>
     </div>

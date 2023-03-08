@@ -1,8 +1,18 @@
 ---
 import ProjectsReactSection from "../components/react/projectSectionReact/projectSectionReact";
 import Layout from "../layouts/Layout.astro";
+const posts = await Astro.glob("../data/projects/*.md");
 ---
 
 <Layout pageName="Projects">
-  <ProjectsReactSection client:load />
+  <ProjectsReactSection client:load projects={posts} />
+  <!-- {
+    posts.map((post) => (
+      <article>
+        <h2>{post.frontmatter.title}</h2>
+        <p>{post.frontmatter.description}</p>
+        <a href={post.frontmatter.url}>Read more</a>
+      </article>
+    ))
+  } -->
 </Layout>
