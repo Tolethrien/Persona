@@ -1,0 +1,10 @@
+---
+export async function getStaticPaths() {
+  const par = await Astro.glob("../../data/projects/*.md");
+  return par.map((post) => ({ params: { project: post.frontmatter.title } }));
+}
+
+const { project } = Astro.params;
+---
+
+<div>Good dog, {project}!</div>

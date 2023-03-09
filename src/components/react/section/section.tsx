@@ -29,7 +29,7 @@ const Section: React.FC<SectionProps> = ({
         <img className={styles.border} alt="" src="/roundMain.svg" />
         <h2>{sectionTitle} Projects</h2>
         <Description isDesktop />
-        {children}
+        <div className={styles.childrenSlot}>{children}</div>
       </div>
       <button className={styles.goBack}>
         <div className={styles.triangle}></div>Go Back

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Description from "../description/desciption";
 import SearchBox from "../searchbox/searchBox";
 import Section from "../section/section";
+import Tile from "../tile/tile";
 import styles from "./projectSectionReact.module.scss";
 interface ProjectsReactSectionProps {
   projects: MarkdownInstance<Record<string, any>>[];
@@ -26,13 +27,36 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = ({
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       >
-        {projects
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        <Tile />
+        {/* {projects
           .filter((p) => p.frontmatter.title.includes(searchValue))
           .map((p) => (
-            <p key={Math.random()} style={{ color: "white" }}>
-              {p.frontmatter.title}
-            </p>
-          ))}
+            <a
+              key={Math.random()}
+              href={`/dynamic/${p.frontmatter.title}`}
+              className={styles.tra}
+            >
+              <div
+                style={{
+                  border: "1px solid black",
+                  width: "100px",
+                  height: "100px",
+                }}
+              >
+                <p style={{ color: "white" }}>{p.frontmatter.title}</p>
+              </div>
+            </a>
+          ))} */}
       </Section>
     </>
   );
