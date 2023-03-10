@@ -29,18 +29,19 @@ const { pageName } = Astro.props;
       position: relative;
       display: flex;
       flex-direction: column;
+      height: 100vh;
       height: 100svh;
-      max-height: 100svh;
       max-width: $maxScreen;
       background: $appBackground;
       overflow-x: hidden;
 
       #bodyBranch {
-        position: absolute;
-        right: -1rem;
+        position: fixed;
+        right: 0;
         top: 40%;
         width: 25rem;
         height: 25rem;
+        z-index: -1;
         pointer-events: none;
         opacity: $branchesOpacity;
         @media (max-width: $smallScreen) {
