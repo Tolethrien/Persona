@@ -26,8 +26,8 @@ const Tile: React.FC<TileProps> = (props) => {
               <p>Tailwias</p>
             </div>
           ))}
-        {/* {te > 3 && <p className={styles.more}>...</p>} */}
-        {isHover && <p className={styles.more}>...</p>}
+        {te > 3 && <p className={styles.moreIcon}>...</p>}
+        {isHover && <div className={styles.moreDetail}>more</div>}
       </div>
     </div>
   );

@@ -1,11 +1,119 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
 ---
 
-<Layout pageName="Main" />
-<style>
-  .tata {
-    color: green;
-    font-size: 2rem;
+<Layout pageName="Main">
+  <div class="content">
+    <h2 class="heading">
+      Welcome to my Page
+      <img src="/monke.svg" alt="" />
+    </h2>
+    <p class="desc">
+      i used this page as my personal part of internet to share my stuff with
+      the world. You can find here some of my projects, my games or you can read
+      about my JS game Engine that am making!
+    </p>
+    <p class="desc findout">
+      ...if you want you can contact me via media bellow.
+    </p>
+  </div>
+  <div class="socialBar">
+    <a href={LINK_LINKEDIN} target="_blank" rel="noreferrer noopener">
+      <img class="icon" src="/linked.svg" alt="linekdIn Link" />
+    </a>
+    <a href={LINK_GITHUB} target="_blank" rel="noreferrer noopener">
+      <img class="icon" src="/github.svg" alt="github link" />
+    </a>
+    <a href="/contact">
+      <img class="icon" src="/mail.svg" alt="email link" />
+    </a>
+  </div>
+</Layout>
+
+<style lang="scss">
+  @import "../styles/vars.scss";
+
+  .content {
+    margin-top: 10rem;
+    margin-inline: 8rem 14rem;
+    @media (max-width: $midScreen) {
+      margin-inline: 6rem 8rem;
+    }
+    @media (max-width: $smallScreen) {
+      margin-top: 4rem;
+      margin-inline: 1rem;
+    }
+    .heading {
+      font-size: 4rem;
+      font-weight: 800;
+      color: $secondaryColor;
+      position: relative;
+      @media (max-width: $midScreen) {
+        font-size: 2.5rem;
+      }
+      @media (max-width: $smallScreen) {
+        font-size: 2rem;
+        text-align: center;
+      }
+      img {
+        position: absolute;
+        // filter: brightness(70%);
+        top: -2rem;
+        left: -0.65rem;
+        width: 3rem;
+        @media (min-width: $midScreen) {
+          top: -1.9rem;
+        }
+        @media (max-width: $smallScreen) {
+          display: none;
+        }
+      }
+    }
+    .desc {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $primaryColor;
+      padding-block: 2rem;
+      @media (max-width: $midScreen) {
+        font-size: 1.1rem;
+        padding-block: 1rem;
+      }
+      @media (max-width: $smallScreen) {
+        margin-inline: 2rem;
+      }
+    }
+    .findout {
+      text-align: end;
+    }
+  }
+  .socialBar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: white;
+    bottom: 1rem;
+    right: 0;
+    right: 10rem;
+    a {
+      width: 2.5rem;
+      height: 2.5rem;
+      @media (min-width: $midScreen) {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+    @media (max-width: $smallScreen) {
+      right: 50%;
+      transform: translateX(50%);
+      background-color: hsla(226, 19%, 37%, 1);
+      border-radius: 10px;
+      padding: 0.2rem 1rem;
+    }
+  }
+  .icon {
+    height: 100%;
   }
 </style>
