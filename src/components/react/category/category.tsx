@@ -1,31 +1,26 @@
 import SearchBox from "../searchbox/searchBox";
+import { useFragment } from "../stateManager/fragment";
+import { DisplayedWindow as store } from "../stores/fragments";
 import styles from "./category.module.scss";
-interface CategoryProps {
-  currentDisplay: string;
-  setCurrentDisplay: React.Dispatch<React.SetStateAction<string>>;
-  searchValue: string;
-  setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-}
-const Category: React.FC<CategoryProps> = ({
-  setCurrentDisplay,
-  currentDisplay,
-  searchValue,
-  setSearchValue,
-}) => {
+interface CategoryProps {}
+const Category: React.FC<CategoryProps> = ({}) => {
+  // const { currentDisplay, setCurrentDisplay } = useContext(store)!;
+  const [displayedWindow, setDisplayedWindow] = useFragment(store);
+
   return (
     <div className={styles.category}>
       <div className={styles.searchboxWrap}>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBox />
       </div>
       <div className={styles.categoryButtons}>
         <button
           onClick={() => {
-            setCurrentDisplay("Production");
+            setDisplayedWindow("Production");
           }}
         >
           <p
             className={
-              currentDisplay === "Production" ? styles.isSelected : undefined
+              displayedWindow === "Production" ? styles.isSelected : undefined
             }
           >
             Production
@@ -34,12 +29,12 @@ const Category: React.FC<CategoryProps> = ({
         <img alt="" src="/underlineBranch.svg" />
         <button
           onClick={() => {
-            setCurrentDisplay("Development");
+            setDisplayedWindow("Development");
           }}
         >
           <p
             className={
-              currentDisplay === "Development" ? styles.isSelected : undefined
+              displayedWindow === "Development" ? styles.isSelected : undefined
             }
           >
             Development

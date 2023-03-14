@@ -21,13 +21,13 @@ const Tile: React.FC<TileProps> = (props) => {
         {Array(3)
           .fill(null)
           .map((e) => (
-            <div className={styles.techSlot}>
+            <div key={Math.random()} className={styles.techSlot}>
               <p>I</p>
               <p>Tailwias</p>
             </div>
           ))}
-        {te > 3 && <p className={styles.more}>...</p>}
-        {/* {isHover && <p className={styles.more}>...</p>} */}
+        {/* {te > 3 && <p className={styles.more}>...</p>} */}
+        {isHover && <p className={styles.more}>...</p>}
       </div>
     </div>
   );

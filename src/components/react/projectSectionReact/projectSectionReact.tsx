@@ -1,5 +1,4 @@
 import type { MarkdownInstance } from "astro";
-import { useState } from "react";
 import Description from "../description/desciption";
 import SearchBox from "../searchbox/searchBox";
 import Section from "../section/section";
@@ -8,31 +7,20 @@ import styles from "./projectSectionReact.module.scss";
 interface ProjectsReactSectionProps {
   projects: MarkdownInstance<Record<string, any>>[];
 }
+
+// export const store = createContext<null | StateProps>(null);
 const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = ({
   projects,
 }) => {
-  const [currentDisplay, setCurrentDisplay] = useState("Production");
-  const [searchValue, setSearchValue] = useState("");
-
   return (
     <>
       {/* mobile bar pulled out of section */}
       <div className={styles.mobileTopBar}>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBox />
         <Description />
       </div>
-      <Section
-        currentDisplay={currentDisplay}
-        setCurrentDisplay={setCurrentDisplay}
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      >
-        <Tile />
-        <Tile />
-        <Tile />
-        <Tile />
-        <Tile />
-        <Tile />
+
+      <Section>
         <Tile />
         <Tile />
         <Tile />
