@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
+export const LINK_GITHUB = "https://github.com/Tolethrien";
+export const LINK_LINKEDIN =
+  "https://www.linkedin.com/in/paweł-grela-762165234/";
 ---
 
 <Layout pageName="Main">
@@ -37,6 +39,7 @@ import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
   .content {
     margin-top: 10rem;
     margin-inline: 8rem 14rem;
+    transition: 1s;
     @media (max-width: $midScreen) {
       margin-inline: 6rem 8rem;
     }
@@ -49,6 +52,8 @@ import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
       font-weight: 800;
       color: $secondaryColor;
       position: relative;
+      transition: 1s;
+
       @media (max-width: $midScreen) {
         font-size: 2.5rem;
       }
@@ -62,6 +67,7 @@ import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
         top: -2rem;
         left: -0.65rem;
         width: 3rem;
+        transition: 1s;
         @media (min-width: $midScreen) {
           top: -1.9rem;
         }
@@ -75,6 +81,8 @@ import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
       font-weight: 600;
       color: $primaryColor;
       padding-block: 2rem;
+      transition: 1s;
+
       @media (max-width: $midScreen) {
         font-size: 1.1rem;
         padding-block: 1rem;
@@ -97,6 +105,8 @@ import { LINK_GITHUB, LINK_LINKEDIN } from "../data/links/links";
     bottom: 1rem;
     right: 0;
     right: 10rem;
+    transition: 1s;
+
     a {
       width: 2.5rem;
       height: 2.5rem;

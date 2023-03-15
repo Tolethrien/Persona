@@ -1,69 +1,78 @@
 @import "../../../styles/vars.scss";
+.astroAncor {
+  text-decoration: none;
+  width: 20rem;
 
-.component {
-  display: flex;
-  flex-direction: column;
-  color: white;
-  background: $appBackground;
-  border: 1px solid hsla(225, 20%, 80%, 0.5);
-  border-radius: 5px 5px 0 0;
-  max-width: 20rem;
-  font-size: 1.2rem;
   @media (max-width: $midScreen) {
-    max-width: 17rem;
     font-size: 1rem;
+    width: 15rem;
   }
   @media (max-width: $smallScreen) {
-    // max-width: 1rem;
     font-size: 1rem;
+    width: 90%;
   }
-  .preview {
-    height: 7rem;
-    background-color: grey;
-    opacity: 0.4;
+  .component {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    @media (max-width: $midScreen) {
-      height: 6rem;
+    flex-direction: column;
+    color: white;
+    background: $appBackground;
+    border: 1px solid hsla(225, 20%, 80%, 0.5);
+    border-radius: 5px 5px 0 0;
+    font-size: 1.2rem;
+    &:hover {
+      background: red;
     }
-  }
-  .desc {
-    height: 35%;
-    padding: 0.5rem;
-    font-size: 1em;
-    h3 {
-      text-align: center;
-      font-size: 1.2em;
-    }
-  }
-  .tech {
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    flex-wrap: wrap;
-    position: relative;
-
-    .techSlot {
-      background-color: $primaryColor;
-      padding: 0.2rem;
+    .preview {
+      height: 7rem;
+      background-color: grey;
+      opacity: 0.4;
       display: flex;
+      justify-content: center;
       align-items: center;
-      border-radius: 5px;
-      font-size: 0.8em;
-      flex-grow: 0;
-      width: fit-content;
-      height: fit-content;
-      gap: 0.2rem;
+      @media (max-width: $midScreen) {
+        height: 6rem;
+      }
     }
-    .moreIcon {
-      align-self: flex-end;
-      font-size: 1rem;
+    .desc {
+      height: 35%;
+      padding: 0.5rem;
+      font-size: 1em;
+      h3 {
+        text-align: center;
+        font-size: 1.2em;
+      }
     }
-    .moreDetail {
-      position: absolute;
-      right: 0;
-      background-color: red;
+    .tech {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      min-height: 3rem;
+
+      .techSlot {
+        background-color: $primaryColor;
+        padding: 0.2rem;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        font-size: 0.8em;
+        flex-grow: 0;
+        width: fit-content;
+        height: fit-content;
+        gap: 0.2rem;
+      }
+      .moreIcon {
+        align-self: flex-end;
+        font-size: 1rem;
+      }
+      .moreDetail {
+        position: absolute;
+        right: 0;
+
+        background-color: red;
+      }
     }
   }
 }

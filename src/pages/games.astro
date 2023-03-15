@@ -1,54 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import ProjectsReactSection from "../components/react/projectSectionReact/projectSectionReact";
+const projects = await getCollection("games");
 ---
 
 <Layout pageName="Games">
-  <div class="wrap">
-    <div class="side">side</div>
-    <div class="main">
-      <div class="head"><p>asdasd</p></div>
-      <div class="desc">desc</div>
-      <div class="content">
-        cs
-        <!-- {
-          Array(160)
-            .fill(null)
-            .map((e) => <p>content</p>)
-        } -->
-      </div>
-    </div>
-  </div>
+  <ProjectsReactSection client:visible content={projects} />
 </Layout>
-<style lang="scss">
-  .wrap {
-    display: flex;
-    flex-grow: 1;
-    background-color: red;
-    .side {
-      flex: 1;
-      border: 2px solid black;
-    }
-    .main {
-      flex: 4;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      // height: 100%;
-      border: 2px solid black;
-
-      .head {
-        border: 2px solid black;
-      }
-      .desc {
-        border: 2px solid black;
-      }
-      .content {
-        border: 2px solid black;
-        height: fit-content;
-        // flex-grow: 1;
-        height: 10rem;
-        overflow-y: scroll;
-      }
-    }
-  }
-</style>

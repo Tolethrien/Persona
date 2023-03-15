@@ -1,7 +1,7 @@
 import { createFragment } from "../stateManager/fragment";
 
-export const DisplayedWindow = createFragment<"Production" | "Development">(
-  "Production"
-);
+export const DisplayedWindowFragment = createFragment<
+  "Production" | "Development"
+>("Production");
 
-export const searchValue = createFragment<string>("");
+export const searchValueFragment = createFragment<string>("");

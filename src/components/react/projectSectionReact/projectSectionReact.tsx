@@ -1,17 +1,32 @@
-import type { MarkdownInstance } from "astro";
+import type { CollectionEntry } from "astro:content";
 import Description from "../description/desciption";
 import SearchBox from "../searchbox/searchBox";
 import Section from "../section/section";
+import { useFragmentValue } from "../stateManager/fragment";
+import {
+  DisplayedWindowFragment,
+  searchValueFragment,
+} from "../stores/fragments";
 import Tile from "../tile/tile";
 import styles from "./projectSectionReact.module.scss";
 interface ProjectsReactSectionProps {
-  projects: MarkdownInstance<Record<string, any>>[];
+  content: CollectionEntry<"games">[] | CollectionEntry<"projects">[];
 }
+const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = (props) => {
+  const content = props.content as CollectionEntry<"projects">[];
 
-// export const store = createContext<null | StateProps>(null);
-const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = ({
-  projects,
-}) => {
+  const displayedWindowValue = useFragmentValue(DisplayedWindowFragment);
+  const searchValue = useFragmentValue(searchValueFragment);
+
+  const filterByDone = (value: CollectionEntry<"projects">) => {
+    return displayedWindowValue === "Development"
+      ? !value.data.done
+      : value.data.done;
+  };
+  const filterBySearch = (value: CollectionEntry<"projects">) => {
+    return value.data.title.includes(searchValue);
+  };
+
   return (
     <>
       {/* mobile bar pulled out of section */}
@@ -19,32 +34,13 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = ({
         <SearchBox />
         <Description />
       </div>
-
       <Section>
-        <Tile />
-        <Tile />
-        <Tile />
-        <Tile />
-        <Tile />
-        {/* {projects
-          .filter((p) => p.frontmatter.title.includes(searchValue))
-          .map((p) => (
-            <a
-              key={Math.random()}
-              href={`/dynamic/${p.frontmatter.title}`}
-              className={styles.tra}
-            >
-              <div
-                style={{
-                  border: "1px solid black",
-                  width: "100px",
-                  height: "100px",
-                }}
-              >
-                <p style={{ color: "white" }}>{p.frontmatter.title}</p>
-              </div>
-            </a>
-          ))} */}
+        {content
+          .filter(filterByDone)
+          .filter(filterBySearch)
+          .map((project) => (
+            <Tile key={Math.random()} data={project.data} slug={project.slug} />
+          ))}
       </Section>
     </>
   );

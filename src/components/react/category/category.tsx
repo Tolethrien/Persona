@@ -1,11 +1,13 @@
 import SearchBox from "../searchbox/searchBox";
 import { useFragment } from "../stateManager/fragment";
-import { DisplayedWindow as store } from "../stores/fragments";
+import { DisplayedWindowFragment } from "../stores/fragments";
 import styles from "./category.module.scss";
 interface CategoryProps {}
 const Category: React.FC<CategoryProps> = ({}) => {
   // const { currentDisplay, setCurrentDisplay } = useContext(store)!;
-  const [displayedWindow, setDisplayedWindow] = useFragment(store);
+  const [displayedWindow, setDisplayedWindow] = useFragment(
+    DisplayedWindowFragment
+  );
 
   return (
     <div className={styles.category}>

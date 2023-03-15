@@ -1,10 +1,9 @@
 import { useFragment } from "../stateManager/fragment";
-import { searchValue as store } from "../stores/fragments";
+import { searchValueFragment } from "../stores/fragments";
 import styles from "./searchBox.module.scss";
 interface SearchBoxProps {}
 const SearchBox: React.FC<SearchBoxProps> = ({}) => {
-  // const { searchValue, setSearchValue } = useContext(store)!;
-  const [searchValue, setSearchValue] = useFragment(store);
+  const [searchValue, setSearchValue] = useFragment(searchValueFragment);
 
   return (
     <div className={styles.searchBox}>

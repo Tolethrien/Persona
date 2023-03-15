@@ -50,7 +50,6 @@
     .childrenSlot {
       display: flex;
       flex-wrap: wrap;
-      overflow-x: hidden;
       gap: 1rem;
       @media (max-width: $smallScreen) {
         flex-wrap: nowrap;

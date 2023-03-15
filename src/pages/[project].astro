@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("projects");
+  return blogEntries.map((entry) => ({
+    params: { project: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+---
+
+<Layout pageName={entry.data.title}>
+  <div class="test">
+    <h1>{entry.data.title}</h1>
+  </div>
+</Layout>
+<style lang="scss">
+  .test {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: wheat;
+  }
+</style>
