@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getCollection, getEntryBySlug } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
+import Tags from "../components/astro/[project]/tags.astro";
+import Source from "../components/astro/[project]/source.astro";
+import ImagesBox from "../components/astro/[project]/imagesBox.astro";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("projects");
   return blogEntries.map((entry) => ({
@@ -8,20 +11,114 @@ export async function getStaticPaths() {
     props: { entry },
   }));
 }
-const { entry } = Astro.props;
+interface Props {
+  entry: CollectionEntry<"projects">;
+}
+const {
+  entry: { data },
+} = Astro.props;
 ---
 
-<Layout pageName={entry.data.title}>
-  <div class="test">
-    <h1>{entry.data.title}</h1>
+<Layout pageName={data.title}>
+  <div class="desktop">
+    <div class="tags">
+      <Tags tags={data.tags} />
+    </div>
+    <div class="main">
+      <h2 class="padding">{data.title}</h2>
+      <p class="padding">{data.description}</p>
+    </div>
+    <div class="other">
+      <ImagesBox images={data.images} />
+      <Source links={data.links} />
+    </div>
+  </div>
+  <!-- ============================ -->
+  <div class="mobile">
+    <h2 class="padding">{data.title}</h2>
+    <div class="content">
+      <img class="border" alt="" src="/roundMain.svg" />
+      <Source links={data.links} />
+      <p class="padding">{data.description}</p>
+      <ImagesBox images={data.images} />
+      <Tags tags={data.tags} />
+    </div>
   </div>
 </Layout>
 <style lang="scss">
-  .test {
+  @import "../styles/vars.scss";
+
+  .mobile {
+    margin-top: 3rem;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: wheat;
+    font-size: 0.8rem;
+
+    @media (min-width: $smallScreen) {
+      display: none;
+    }
+    .content {
+      position: relative;
+      .border {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40rem;
+        pointer-events: none;
+      }
+    }
+  }
+  .desktop {
+    display: flex;
+    flex-grow: 1;
+    margin-top: 10rem;
+    color: white;
+    font-size: 1rem;
+
+    @media (max-width: $smallScreen) {
+      display: none;
+    }
+    @media (max-width: $midScreen) {
+      font-size: 0.7rem;
+    }
+    .tags {
+      position: relative;
+      flex: 1;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 80%;
+        top: 0;
+        right: -0.5rem;
+        background-color: white;
+      }
+    }
+    .main {
+      flex: 3;
+    }
+    .other {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  h2 {
+    font-size: 3.5em;
+    color: $secondaryColor;
+  }
+  p {
+    font-size: 1.5em;
+    color: $primaryColor;
+  }
+  .padding {
+    margin-left: 1rem;
+    @media (max-width: $smallScreen) {
+      margin-inline: 0.5rem;
+    }
   }
 </style>

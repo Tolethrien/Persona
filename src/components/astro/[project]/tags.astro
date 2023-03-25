@@ -1,0 +1,70 @@
+---
+interface Props {
+  tags: string[];
+}
+const { tags } = Astro.props;
+const capitalize = (tag: string) => {
+  return tag.charAt(0).toUpperCase() + tag.slice(1);
+};
+---
+
+<div class="component">
+  <p class="title">Tags</p>
+  <div class="tagList">
+    {
+      tags.map((tag) => (
+        <div class="tag">
+          <img src={`/techIcons/${tag.toLowerCase()}.svg`} alt="" />
+          <p>{capitalize(tag)}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+<style lang="scss">
+  @import "../../../styles/vars.scss";
+  .component {
+    text-align: center;
+    margin-top: 3rem;
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: $secondaryColor;
+    }
+    .tagList {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+      @media (max-width: $smallScreen) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-inline: 1rem;
+      }
+      .tag {
+        justify-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 80%;
+        font-size: 1rem;
+        background-color: $primaryColor;
+        border-radius: 5px;
+        padding-block: 0.3rem;
+        @media (max-width: $midScreen) {
+          gap: 0.2rem;
+          width: 96%;
+        }
+
+        img {
+          width: 1rem;
+        }
+        p {
+          color: black;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+</style>

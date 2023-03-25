@@ -10,7 +10,7 @@ const Tile: React.FC<TileProps> = ({ data, slug }) => {
     <a className={styles.astroAncor} href={`/${slug}`}>
       <div className={styles.component}>
         <div className={styles.preview}>
-          <img alt="preview image" src={data?.image}></img>
+          <img alt="preview image" src={data?.images[0]}></img>
         </div>
         <div className={styles.desc}>
           <h3>{data.title}</h3>

@@ -1,0 +1,97 @@
+---
+interface Props {
+  links: { source: string; app: string };
+}
+const { links } = Astro.props;
+const test = links.source.length > 20 && links.source.slice(0, 10);
+---
+
+<div class="component">
+  <p class="title">Go Check!</p>
+  <div class="link">
+    <div class="textWithIcon">
+      <p>App</p>
+      <img src="/github.svg" alt="" />
+    </div>
+    <a href={links.app} target="_blank" rel="noopener noreferrer"
+      >{links.app}
+    </a>
+  </div>
+  <div class="link">
+    <div class="textWithIcon">
+      <p>Source</p>
+      <img src="/monke.svg" alt="" />
+    </div>
+    <a href={links.source} target="_blank" rel="noopener noreferrer">
+      {test}
+    </a>
+  </div>
+</div>
+<style lang="scss">
+  @import "../../../styles/vars.scss";
+  .component {
+    position: relative;
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    @media (max-width: $midScreen) {
+      font-size: 0.8rem;
+    }
+    @media (min-width: $smallScreen) {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -1rem;
+        width: 4px;
+        height: 100%;
+        background-color: white;
+      }
+    }
+    .title {
+      font-size: 3em;
+      font-weight: 700;
+      color: $secondaryColor;
+      transition: 1s;
+      @media (max-width: $smallScreen) {
+        display: none;
+      }
+    }
+    .link {
+      display: flex;
+      flex-direction: column;
+      @media (max-width: $smallScreen) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-block: 0.5rem;
+      }
+      .textWithIcon {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        @media (max-width: $smallScreen) {
+          flex-direction: row-reverse;
+        }
+        p {
+          color: $secondaryColor;
+          position: relative;
+          width: fit-content;
+          font-size: 2em;
+          font-weight: 700;
+          transition: 1s;
+        }
+        img {
+          width: 1.5rem;
+        }
+      }
+      a {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: $primaryColor;
+        text-decoration: underline;
+        transition: 1s;
+      }
+    }
+  }
+</style>

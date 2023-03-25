@@ -1,8 +1,10 @@
 ---
 title: "test"
 description: "test2"
-image: "/monke.svg"
+images: ["sd"]
 tags: ["tailwind", "sass"]
+links: { source: "source", app: "app" }
+
 done: false
 ---
 

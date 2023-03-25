@@ -1,9 +1,10 @@
 ---
 title: "test"
 description: "test2"
-image: "/monke.svg"
+images: ["/monke.svg"]
 tags: ["tailwind", "sass"]
 done: true
+links: { source: "source", app: "app" }
 ---
 
 sadasdsds

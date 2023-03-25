@@ -1,0 +1,16 @@
+---
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<div class="component">
+  {images.map((e) => <img src={""} alt="ss" />)}
+</div>
+
+<style lang="scss">
+  .component {
+    flex-grow: 1;
+  }
+</style>

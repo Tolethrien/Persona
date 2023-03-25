@@ -4,8 +4,9 @@ export const contentCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     tags: z.array(z.string()),
-    image: z.string().optional(),
+    images: z.array(z.string()),
     done: z.boolean(),
+    links: z.object({ source: z.string(), app: z.string() }),
   }),
 });
 
