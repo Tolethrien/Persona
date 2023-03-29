@@ -30,8 +30,10 @@ const {
         <p class="padding">{data.description}</p>
       </div>
       <div class="other">
-        <div class="imageWrapper">
-          <img class="projectPromoImg" src={data.images[0]} alt="ss" />
+        <div class="imageContent">
+          <div class="imageWrapper">
+            <img class="projectPromoImg" src={data.images[0]} alt="ss" />
+          </div>
         </div>
         <Source links={data.links} />
       </div>
@@ -44,17 +46,20 @@ const {
       <img class="border" alt="" src="/roundMain.svg" />
       <Source links={data.links} />
       <p class="padding">{data.description}</p>
-      <div class="imageWrapper">
-        <img class="projectPromoImg" src={data.images[0]} alt="ss" />
+      <div class="imageContent">
+        <div class="imageWrapper">
+          <img class="projectPromoImg" src={data.images[0]} alt="ss" />
+        </div>
       </div>
       <Tags tags={data.tags} />
     </div>
   </div>
+
   <ImageModal images={data.images} />
 </Layout>
 <script>
   const modal = document.getElementById("imagesModal") as HTMLDialogElement;
-  Array.from(document.getElementsByClassName("projectPromoImg"))?.forEach((e) =>
+  Array.from(document.getElementsByClassName("imageWrapper"))?.forEach((e) =>
     e.addEventListener("click", () => {
       !modal?.open && modal.showModal();
     })
@@ -69,7 +74,7 @@ const {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-size: 0.8rem;
 
     @media (min-width: $smallScreen) {
@@ -77,17 +82,13 @@ const {
     }
     .mobileContent {
       position: relative;
+      width: 100%;
       .border {
         position: absolute;
         left: 0;
         top: 0;
         width: 40rem;
         pointer-events: none;
-      }
-      .imageWrapper {
-        width: 100%;
-        margin-top: 2rem;
-        text-align: center;
       }
     }
   }
@@ -115,24 +116,30 @@ const {
         height: 80%;
         top: 0;
         right: -0.5rem;
-        background-color: white;
+        background-color: wheat;
       }
     }
     .main {
       display: flex;
       flex-direction: column;
+      flex-grow: 1;
       @media (min-width: $midScreen) {
         flex-direction: row;
       }
       .content {
         flex-grow: 1;
         max-width: 70%;
+        @media (max-width: $midScreen) {
+          max-width: 90%;
+        }
       }
       .other {
         display: flex;
+        margin-top: 2rem;
 
         @media (min-width: $midScreen) {
           flex-direction: column;
+          margin-top: 0;
         }
       }
     }
@@ -144,6 +151,10 @@ const {
   p {
     font-size: 1.5em;
     color: $primaryColor;
+    padding: 1rem;
+    @media (max-width: $smallScreen) {
+      padding: 0;
+    }
   }
   .padding {
     margin-left: 1rem;
@@ -151,12 +162,51 @@ const {
       margin-inline: 0.5rem;
     }
   }
-  .imageWrapper {
+  .imageContent {
+    display: flex;
+    justify-content: center;
     flex-grow: 1;
-    img {
+
+    .imageWrapper {
+      position: relative;
       width: 10rem;
       height: 10rem;
-      border-radius: 8px;
+      cursor: pointer;
+      transition: 1s;
+      // transform: rotate(-2deg);
+      @media (min-width: $midScreen) {
+        width: 12rem;
+        height: 12rem;
+        transform: rotate(-1deg);
+      }
+      @media (max-width: $smallScreen) {
+        margin-top: 2rem;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        filter: blur(1px);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 2rem;
+        height: 2rem;
+        border: 3px dashed wheat;
+        border-radius: 5px;
+        right: 2%;
+        bottom: 2%;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        outline: 2px solid wheat;
+        z-index: 10;
+        width: 100%;
+        border-radius: 8px;
+
+        height: 100%;
+      }
     }
   }
 </style>
