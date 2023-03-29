@@ -1,0 +1,126 @@
+---
+interface Props {
+  images: string[];
+}
+const { images } = Astro.props;
+---
+
+<dialog id="imagesModal">
+  <div class="modalContent">
+    <button id="closeModal">X</button>
+    <p><span id="imageModalValue">1</span>/{images.length}</p>
+    <div class="imageWrapper">
+      <img id="projectCurrentImg" src={images[0]} alt="ss" />
+    </div>
+    <div id="imagesBar">
+      {images.map((e) => <img class="imageBox" src={e} alt="" />)}
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const modal = document.getElementById("imagesModal") as HTMLDialogElement;
+  const imageBar = document.getElementById("imagesBar");
+  const imageNumber = document.getElementById("imageModalValue");
+  document.getElementById("closeModal")?.addEventListener("click", () => {
+    modal?.close();
+  });
+  imageBar?.addEventListener("click", (event: MouseEvent) => {
+    let target = event.target as HTMLImageElement;
+    let currentImage = document.getElementById(
+      "projectCurrentImg"
+    ) as HTMLImageElement;
+    if (target.tagName === "IMG" && !currentImage?.src.includes(target.src)) {
+      currentImage.src = target.src;
+      if (imageNumber)
+        imageNumber.innerText = String(
+          Array.from(imageBar.children).findIndex((e) => e === target) + 1
+        );
+    }
+  });
+</script>
+
+<style lang="scss">
+  @import "../../../styles/vars.scss";
+  dialog {
+    width: clamp(15rem, 80%, 50rem);
+    height: 80%;
+    margin: auto;
+    border-radius: 5px;
+    border: none;
+    @media (max-width: $smallScreen) {
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+    }
+    &::backdrop {
+      background-color: rgba(18, 75, 118, 0.251);
+    }
+    .modalContent {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      position: relative;
+      background: $appBackground;
+
+      button {
+        position: absolute;
+        width: 3rem;
+        height: 3rem;
+        align-self: flex-end;
+        background: $primaryColor;
+        border: none;
+        border-radius: 0 0 0 5px;
+        font-size: 2rem;
+        color: $secondaryColor;
+      }
+      p {
+        position: absolute;
+        bottom: 17%;
+        right: 2%;
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: $secondaryColor;
+      }
+      .imageWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 83%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      #imagesBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin-inline: auto;
+        gap: 1rem;
+        height: 17%;
+        background-color: $desktopScrollThumbColor;
+        border: 1px solid wheat;
+        border-radius: 5px 5px 5px 5px;
+        padding-inline: 1rem;
+        overflow-x: auto;
+        @media (max-width: $smallScreen) {
+          justify-content: flex-start;
+        }
+
+        .imageBox {
+          object-fit: cover;
+          flex-shrink: 0;
+          width: 5rem;
+          height: 5rem;
+          background: $desktopScrollThumbColor;
+          border: 1px solid $secondaryColor;
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+</style>

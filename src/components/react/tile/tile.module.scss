@@ -32,6 +32,10 @@
       @media (max-width: $midScreen) {
         height: 6rem;
       }
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
     }
     .desc {
       height: 35%;
