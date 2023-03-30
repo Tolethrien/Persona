@@ -1,5 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const generateImages = async (): Promise<string[]> => {
+  type ImgType = { default: string }[];
+  let images: ImgType = await Astro.glob(
+    "../../public/content/engineImages/*.png"
+  );
+  let slicedimages: ImgType = images.length > 4 ? images.slice(0, 4) : images;
+  return slicedimages.map((el) => el.default.substring(7));
+};
+const gameImages = await generateImages();
 ---
 
 <Layout pageName="Engine">
@@ -25,10 +34,7 @@ import Layout from "../layouts/Layout.astro";
     </div>
     <div class="images">
       <div class="imageBox">
-        <div>s</div>
-        <div>s</div>
-        <div>s</div>
-        <div>s</div>
+        {gameImages.map((src) => <img src={src} class="gameImage" />)}
       </div>
       <div class="readMoreMobile">
         <p>You can read more about it on its Docs Page:</p>
@@ -36,6 +42,9 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </div>
+  <script define:vars={{ gameImages }}>
+    console.log(gameImages);
+  </script>
   <style lang="scss">
     @import "../styles/vars.scss";
 
@@ -82,7 +91,7 @@ import Layout from "../layouts/Layout.astro";
         .border {
           position: absolute;
           left: 0;
-          top: 4.5rem;
+          top: 4.4rem;
           width: 40rem;
           pointer-events: none;
           @media (min-width: $smallScreen) {
@@ -113,13 +122,13 @@ import Layout from "../layouts/Layout.astro";
             grid-template-columns: 1fr;
           }
 
-          div {
+          .gameImage {
             align-self: flex-end;
             justify-self: center;
             width: 10rem;
             height: 10rem;
-            border: 1px solid wheat;
-            color: white;
+            object-fit: fill;
+            border-radius: 5px;
             @media (max-width: $midScreen) {
               width: 8rem;
               height: 8rem;
