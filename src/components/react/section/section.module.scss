@@ -51,6 +51,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
+      margin-top: 2rem;
       @media (max-width: $smallScreen) {
         flex-wrap: nowrap;
         align-items: center;

@@ -1,0 +1,162 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout pageName="Engine">
+  <div class="component">
+    <div class="content">
+      <img class="border" alt="" src="/roundMain.svg" />
+
+      <h2>Engine</h2>
+      <p>
+        Engine(not named yet) is designed to make simple games and 2D animations
+        in javascript. Due to it’s intended releases as standalone projects and
+        not in-browser based products it’s main focus is electron and google’s
+        V8 Engine. It uses canvas and context2DrenderingAPI.
+      </p>
+      <p>
+        Goal of this engine is to quickly create simple but not necessarily
+        small games (e.g. Pokemon or zelda games)
+      </p>
+      <div class="readMoreDesktop">
+        <p>You can read more about it on its Docs Page:</p>
+        <a>gameEngine.vercel.pl</a>
+      </div>
+    </div>
+    <div class="images">
+      <div class="imageBox">
+        <div>s</div>
+        <div>s</div>
+        <div>s</div>
+        <div>s</div>
+      </div>
+      <div class="readMoreMobile">
+        <p>You can read more about it on its Docs Page:</p>
+        <a>gameEngine.vercel.pl</a>
+      </div>
+    </div>
+  </div>
+  <style lang="scss">
+    @import "../styles/vars.scss";
+
+    .component {
+      display: flex;
+      padding-block: 7rem 1rem;
+      @media (max-width: $midScreen) {
+        padding-block: 4.5rem 1rem;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      @media (max-width: $smallScreen) {
+        padding-block: 3rem 1rem;
+
+        flex-direction: column;
+      }
+      .content {
+        position: relative;
+        display: grid;
+        width: 60%;
+        gap: 1rem;
+        padding-left: 6.5rem;
+        @media (max-width: $midScreen) {
+          padding-left: 3rem;
+          width: 75%;
+        }
+        @media (max-width: $smallScreen) {
+          padding-inline: 1rem;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+          justify-items: center;
+        }
+        h2 {
+          font-size: 3.5rem;
+          font-weight: 700;
+          color: $secondaryColor;
+        }
+        .readMoreDesktop {
+          @media (max-width: $smallScreen) {
+            display: none;
+          }
+        }
+        .border {
+          position: absolute;
+          left: 0;
+          top: 4.5rem;
+          width: 40rem;
+          pointer-events: none;
+          @media (min-width: $smallScreen) {
+            display: none;
+          }
+        }
+      }
+      .images {
+        width: 40%;
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @media (max-width: $midScreen) {
+          width: 25%;
+        }
+        @media (max-width: $smallScreen) {
+          align-self: center;
+          flex-direction: column;
+          width: 100%;
+        }
+        .imageBox {
+          width: fit-content;
+          display: grid;
+          gap: 1rem;
+          grid-template-columns: 1fr 1fr;
+          @media (max-width: $midScreen) {
+            grid-template-columns: 1fr;
+          }
+
+          div {
+            align-self: flex-end;
+            justify-self: center;
+            width: 10rem;
+            height: 10rem;
+            border: 1px solid wheat;
+            color: white;
+            @media (max-width: $midScreen) {
+              width: 8rem;
+              height: 8rem;
+            }
+            @media (max-width: $smallScreen) {
+              width: 12rem;
+              height: 12rem;
+            }
+          }
+        }
+        .readMoreMobile {
+          margin-top: 1rem;
+          width: 90%;
+          @media (min-width: $smallScreen) {
+            display: none;
+          }
+        }
+      }
+    }
+    a {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      color: $secondaryColor;
+      float: right;
+      @media (max-width: $smallScreen) {
+        margin-block: 1rem;
+        font-size: 1.5rem;
+      }
+    }
+    p {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: $primaryColor;
+      @media (max-width: $smallScreen) {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</Layout>

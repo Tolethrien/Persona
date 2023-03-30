@@ -4,17 +4,21 @@ interface TileProps {
   data: CollectionEntry<"projects">["data"];
   slug: CollectionEntry<"projects">["slug"];
 }
+const CUT_LENGTH = 60;
 const Tile: React.FC<TileProps> = ({ data, slug }) => {
-  const te = 4;
+  const cuttedDesc =
+    data.description.length > CUT_LENGTH
+      ? data.description.slice(0, CUT_LENGTH) + "..."
+      : data.description;
   return (
-    <a className={styles.astroAncor} href={`/${slug}`}>
+    <a className={styles.astroAncor} href={`/projects/${slug}`}>
       <div className={styles.component}>
         <div className={styles.preview}>
           <img alt="preview image" src={data?.images[0]}></img>
         </div>
         <div className={styles.desc}>
           <h3>{data.title}</h3>
-          <p>{data.description}</p>
+          <p>{cuttedDesc}</p>
         </div>
         <div className={styles.tech}>
           {data.tags.map((e) => (
