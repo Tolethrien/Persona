@@ -6,7 +6,7 @@ const generateImages = async (): Promise<string[]> => {
     "../../public/content/engineImages/*.png"
   );
   let slicedimages: ImgType = images.length > 4 ? images.slice(0, 4) : images;
-  return slicedimages.map((el) => el.default.substring(7));
+  return slicedimages.map((el) => el.default);
 };
 const gameImages = await generateImages();
 ---
