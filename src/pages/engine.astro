@@ -1,14 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const generateImages = async (): Promise<string[]> => {
-  const data = import.meta.env.DEV;
-  type ImgType = { default: string }[];
-  let images: ImgType = await Astro.glob(
+  const isDev = import.meta.env.DEV;
+  type GlobReturnType = { default: string }[];
+  let images: GlobReturnType = await Astro.glob(
     "../../public/content/engineImages/*.png"
   );
-  let slicedimages: ImgType = images.length > 4 ? images.slice(0, 4) : images;
-  if (data) return slicedimages.map((el) => el.default.substring(7));
-  else return slicedimages.map((el) => el.default);
+  let slicedimages: GlobReturnType =
+    images.length > 4 ? images.slice(0, 4) : images;
+  return isDev
+    ? slicedimages.map((el) => el.default.substring(7))
+    : slicedimages.map((el) => el.default);
 };
 const gameImages = await generateImages();
 ---
@@ -17,7 +19,6 @@ const gameImages = await generateImages();
   <div class="component">
     <div class="content">
       <img class="border" alt="" src="/roundMain.svg" />
-
       <h2>Engine</h2>
       <p>
         Engine(not named yet) is designed to make simple games and 2D animations

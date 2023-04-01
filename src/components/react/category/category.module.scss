@@ -3,11 +3,15 @@
 .category {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   gap: 5rem;
   margin-inline: 1rem;
+
   @media (min-width: $smallScreen) {
     padding-top: 15rem;
+  }
+  @media (max-width: $smallScreen) {
+    position: fixed;
+    z-index: 10;
   }
   .searchboxWrap {
     @media (max-width: $smallScreen) {

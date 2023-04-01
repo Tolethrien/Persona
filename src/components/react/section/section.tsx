@@ -9,7 +9,12 @@ interface SectionProps {
 }
 const Section: React.FC<SectionProps> = ({ children }) => {
   const displayedWindow = useFragmentValue(DisplayedWindowFragment);
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <section className={styles.mainSection}>
       <Category />
@@ -19,9 +24,9 @@ const Section: React.FC<SectionProps> = ({ children }) => {
         <Description isDesktop />
         <div className={styles.childrenSlot}>{children}</div>
       </div>
-      <button className={styles.goBack}>
+      {/* <button className={styles.goBack} onClick={scrollToTop}>
         <div className={styles.triangle}></div>Go Back
-      </button>
+      </button> */}
     </section>
   );
 };

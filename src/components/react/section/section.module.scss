@@ -5,10 +5,15 @@
   position: relative;
   @media (max-width: $smallScreen) {
     flex-flow: row-reverse;
+    overflow-x: hidden;
+  }
+  &::-webkit-scrollbar {
+    width: 0px;
   }
   .content {
     position: relative;
     padding: 1rem;
+    padding-right: 2.5rem;
     padding-bottom: 3rem;
     flex-grow: 1;
     @media (min-width: $smallScreen) {
@@ -36,6 +41,8 @@
       pointer-events: none;
       @media (max-width: $smallScreen) {
         width: 40rem;
+        top: 14.1rem;
+        position: fixed;
       }
     }
     h2 {
@@ -68,6 +75,7 @@
     right: 1.5rem;
     background: none;
     border: none;
+    cursor: pointer;
     .triangle {
       margin-inline: auto;
       width: 0;
