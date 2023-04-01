@@ -16,9 +16,10 @@ const gameImages = await generateImages();
 ---
 
 <Layout pageName="Engine">
+  <h2 class="mobileTitle">Engine</h2>
+  <img class="border" alt="" src="/roundMain.svg" />
   <div class="component">
     <div class="content">
-      <img class="border" alt="" src="/roundMain.svg" />
       <h2>Engine</h2>
       <p>
         Engine(not named yet) is designed to make simple games and 2D animations
@@ -45,24 +46,22 @@ const gameImages = await generateImages();
       </div>
     </div>
   </div>
-  <script define:vars={{ gameImages }}>
-    console.log(gameImages);
-  </script>
   <style lang="scss">
     @import "../styles/vars.scss";
 
     .component {
       display: flex;
       padding-block: 7rem 1rem;
+
       @media (max-width: $midScreen) {
         padding-block: 4.5rem 1rem;
         align-items: flex-start;
         gap: 1rem;
       }
       @media (max-width: $smallScreen) {
-        padding-block: 3rem 1rem;
-
+        padding-block: 1rem 2rem;
         flex-direction: column;
+        overflow-x: hidden;
       }
       .content {
         position: relative;
@@ -85,19 +84,12 @@ const gameImages = await generateImages();
           font-size: 3.5rem;
           font-weight: 700;
           color: $secondaryColor;
-        }
-        .readMoreDesktop {
           @media (max-width: $smallScreen) {
             display: none;
           }
         }
-        .border {
-          position: absolute;
-          left: 0;
-          top: 4.4rem;
-          width: 40rem;
-          pointer-events: none;
-          @media (min-width: $smallScreen) {
+        .readMoreDesktop {
+          @media (max-width: $smallScreen) {
             display: none;
           }
         }
@@ -168,6 +160,27 @@ const gameImages = await generateImages();
       color: $primaryColor;
       @media (max-width: $smallScreen) {
         font-size: 1.2rem;
+      }
+    }
+    .mobileTitle {
+      font-size: 3rem;
+      font-weight: 700;
+      color: $secondaryColor;
+      padding-top: 1rem;
+      text-align: center;
+      padding-bottom: 0.6rem;
+      @media (min-width: $smallScreen) {
+        display: none;
+      }
+    }
+    .border {
+      position: fixed;
+      left: 0;
+      top: 10rem;
+      width: 40rem;
+      pointer-events: none;
+      @media (min-width: $smallScreen) {
+        display: none;
       }
     }
   </style>

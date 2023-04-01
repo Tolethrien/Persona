@@ -37,6 +37,8 @@ const pageLinks: pageLinksType = {
   @import "../../../styles/vars";
   #goHome {
     align-self: center;
+    position: relative;
+    z-index: 150;
     img {
       width: 2rem;
       height: 2rem;
@@ -121,6 +123,8 @@ const pageLinks: pageLinksType = {
       transition: 0.4s;
       @media (max-width: $smallScreen) {
         display: flex;
+        position: relative;
+        z-index: 120;
       }
     }
     .headerLinks {
@@ -132,7 +136,17 @@ const pageLinks: pageLinksType = {
       padding-right: 2rem;
       @media (max-width: $smallScreen) {
         display: none;
-        animation: showUp 2s;
+        position: fixed;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        transform: translateX(-50%);
+        animation: showUp 0.5s;
+        // background: $appBackground;
+        backdrop-filter: blur(6px) brightness(0.7);
+        z-index: 100;
+        font-size: 2rem;
+        width: 100%;
         @keyframes showUp {
           0% {
             opacity: 0;
