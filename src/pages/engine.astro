@@ -1,12 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const generateImages = async (): Promise<string[]> => {
+  const data = import.meta.env.DEV;
   type ImgType = { default: string }[];
   let images: ImgType = await Astro.glob(
     "../../public/content/engineImages/*.png"
   );
   let slicedimages: ImgType = images.length > 4 ? images.slice(0, 4) : images;
-  return slicedimages.map((el) => el.default);
+  if (data) return slicedimages.map((el) => el.default.substring(7));
+  else return slicedimages.map((el) => el.default);
 };
 const gameImages = await generateImages();
 ---
