@@ -26,8 +26,8 @@ const {
     </div>
     <div class="main">
       <div class="content">
-        <h2 class="padding">{data.title}</h2>
-        <p class="padding">{data.description}</p>
+        <h2 class="addMargin">{data.title}</h2>
+        <p class="addMargin">{data.description}</p>
       </div>
       <div class="other">
         <div class="imageContent">
@@ -40,19 +40,17 @@ const {
     </div>
   </div>
   <!-- ============================ -->
-  <div class="mobile">
-    <h2 class="padding">{data.title}</h2>
-    <div class="mobileContent">
-      <img class="border" alt="" src="/roundMain.svg" />
-      <Source links={data.links} />
-      <p class="padding">{data.description}</p>
-      <div class="imageContent">
-        <div class="imageWrapper">
-          <img class="projectPromoImg" src={data.images[0]} alt="ss" />
-        </div>
+  <h2 class="mobileTitle addMargin">{data.title}</h2>
+  <div class="mobileContent">
+    <img class="border" alt="" src="/roundMain.svg" />
+    <Source links={data.links} />
+    <p class="addMargin">{data.description}</p>
+    <div class="imageContent">
+      <div class="imageWrapper">
+        <img class="projectPromoImg" src={data.images[0]} alt="ss" />
       </div>
-      <Tags tags={data.tags} />
     </div>
+    <Tags tags={data.tags} />
   </div>
 
   <ImageModal images={data.images} />
@@ -67,31 +65,30 @@ const {
 </script>
 <style lang="scss">
   @import "../../styles/vars.scss";
-
-  .mobile {
-    margin-block: 3rem 1rem;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    font-size: 0.8rem;
-
+  .mobileTitle {
+    margin-block: 1rem;
     @media (min-width: $smallScreen) {
       display: none;
     }
-    .mobileContent {
-      position: relative;
-      width: 100%;
-      .border {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 40rem;
-        pointer-events: none;
-      }
+  }
+  .mobileContent {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    @media (min-width: $smallScreen) {
+      display: none;
+    }
+    .border {
+      position: fixed;
+      left: 0;
+      top: 10.5rem;
+      width: 40rem;
+      pointer-events: none;
     }
   }
+
   .desktop {
     display: flex;
     flex-grow: 1;
@@ -147,6 +144,10 @@ const {
   h2 {
     font-size: 3.5em;
     color: $secondaryColor;
+
+    @media (max-width: $smallScreen) {
+      font-size: 3em;
+    }
   }
   p {
     font-size: 1.5em;
@@ -156,7 +157,7 @@ const {
       padding: 0;
     }
   }
-  .padding {
+  .addMargin {
     margin-left: 1rem;
     @media (max-width: $smallScreen) {
       margin-inline: 0.5rem;
