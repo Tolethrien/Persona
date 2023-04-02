@@ -28,7 +28,7 @@ const Category: React.FC<CategoryProps> = ({}) => {
             Production
           </p>
         </button>
-        <img alt="" src="/underlineBranch.svg" />
+        <img alt="" src="/appIcons/underlineBranch.svg" />
         <button
           onClick={() => {
             setDisplayedWindow("Development");

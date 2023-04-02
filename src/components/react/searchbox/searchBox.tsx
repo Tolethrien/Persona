@@ -7,7 +7,12 @@ const SearchBox: React.FC<SearchBoxProps> = ({}) => {
 
   return (
     <div className={styles.searchBox}>
-      <img alt="" src={searchValue[0] === "#" ? "hash.svg" : "Loop.svg"} />
+      <img
+        alt=""
+        src={
+          searchValue[0] === "#" ? "/appIcons/hash.svg" : "/appIcons/Loop.svg"
+        }
+      />
       <input
         type="text"
         value={searchValue}
