@@ -25,12 +25,15 @@ export const createFragment = <FragmentType,>(
   };
 };
 export const useFragment = <FragmentType,>(
-  atom: Fragment<FragmentType>
+  fragment: Fragment<FragmentType>
 ): [FragmentType, (newVal: FragmentType) => void] => {
-  return [useSyncExternalStore(atom.subscribe, atom.get, atom.get), atom.set];
+  return [
+    useSyncExternalStore(fragment.subscribe, fragment.get, fragment.get),
+    fragment.set,
+  ];
 };
 export const useFragmentValue = <FragmentType,>(
-  atom: Fragment<FragmentType>
+  fragment: Fragment<FragmentType>
 ): FragmentType => {
-  return useSyncExternalStore(atom.subscribe, atom.get, atom.get);
+  return useSyncExternalStore(fragment.subscribe, fragment.get, fragment.get);
 };

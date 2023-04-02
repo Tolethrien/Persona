@@ -10,6 +10,12 @@
   }
   img {
     pointer-events: none;
+    width: 1.5rem;
+    transition: 0.5s;
+    src: url("/hash.svg");
+    @media (max-width: $midScreen) {
+      width: 1rem;
+    }
   }
   input {
     background: none;

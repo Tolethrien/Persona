@@ -24,7 +24,12 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = (props) => {
       : value.data.done;
   };
   const filterBySearch = (value: CollectionEntry<"projects">) => {
-    return value.data.title.includes(searchValue);
+    if (searchValue[0] === "#")
+      return value.data.tags.find((e) =>
+        e.toLowerCase().includes(searchValue.slice(1).toLowerCase())
+      );
+    else
+      return value.data.title.toLowerCase().includes(searchValue.toLowerCase());
   };
 
   return (
