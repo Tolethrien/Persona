@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import styles from "./tile.module.scss";
-import { capitalize } from "../../utils/utilsFunc";
+import { capitalize, randomKey } from "../../utils/utilsFunc";
 import { useFragmentValue } from "../stateManager/fragment";
 import { searchValueFragment } from "../stores/fragments";
 import { useMemo } from "react";
@@ -14,8 +14,11 @@ const Tile: React.FC<TileProps> = ({ data, slug }) => {
   const searchValue = useFragmentValue(searchValueFragment);
 
   const cuttedDesc = useMemo(() => {
+    let isSpace =
+      data.description.length > CUT_LENGTH &&
+      data.description[CUT_LENGTH - 1] === " ";
     return data.description.length > CUT_LENGTH
-      ? data.description.slice(0, CUT_LENGTH) + "..."
+      ? data.description.slice(0, isSpace ? CUT_LENGTH - 1 : CUT_LENGTH) + "..."
       : data.description;
   }, [data.description]);
 
@@ -26,7 +29,7 @@ const Tile: React.FC<TileProps> = ({ data, slug }) => {
     <a className={styles.astroAncor} href={`/projects/${slug}`}>
       <div className={styles.component}>
         <div className={styles.preview}>
-          <img alt="preview image" src={data?.images[0]}></img>
+          <img alt="preview image" src={`./content/${data?.images[0]}`}></img>
         </div>
         <div className={styles.desc}>
           <h3>{data.title}</h3>
@@ -36,8 +39,8 @@ const Tile: React.FC<TileProps> = ({ data, slug }) => {
           {data.tags
             .filter(filterByTags)
             .filter((_, i) => i < 3)
-            .map((tag) => (
-              <div className={styles.tag}>
+            .map((tag, index) => (
+              <div className={styles.tag} key={randomKey()}>
                 <img src={`/techIcons/${tag.toLowerCase()}.svg`} alt="" />
                 <p>{capitalize(tag)}</p>
               </div>

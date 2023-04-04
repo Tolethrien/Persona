@@ -59,6 +59,10 @@
       flex-wrap: wrap;
       position: relative;
       min-height: 3rem;
+      @media (max-width: $smallScreen) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
 
       .techSlot {
         background-color: $primaryColor;
@@ -73,10 +77,13 @@
         gap: 0.2rem;
       }
       .moreIcon {
-        align-self: flex-end;
+        text-align: start;
         margin-bottom: 0.1rem;
         font-size: 1.5rem;
         font-weight: 800;
+        @media (max-width: $smallScreen) {
+          padding-left: 0.5rem;
+        }
       }
     }
   }
@@ -92,9 +99,9 @@
   background-color: $primaryColor;
   border-radius: 5px;
   padding-block: 0.3rem;
+
   @media (max-width: $smallScreen) {
-    min-width: 6rem;
-    flex-wrap: wrap;
+    width: 100%;
   }
 
   img {

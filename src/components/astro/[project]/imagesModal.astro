@@ -10,10 +10,10 @@ const { images } = Astro.props;
     <button id="closeModal">X</button>
     <p><span id="imageModalValue">1</span>/{images.length}</p>
     <div class="imageWrapper">
-      <img id="projectCurrentImg" src={images[0]} alt="ss" />
+      <img id="projectCurrentImg" src={`/content/${images[0]}`} alt="ss" />
     </div>
     <div id="imagesBar">
-      {images.map((e) => <img class="imageBox" src={e} alt="" />)}
+      {images.map((e) => <img class="imageBox" src={`/content/${e}`} alt="" />)}
     </div>
   </div>
 </dialog>

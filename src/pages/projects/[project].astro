@@ -33,7 +33,11 @@ const {
       <div class="other">
         <div class="imageContent">
           <div class="imageWrapper">
-            <img class="projectPromoImg" src={data.images[0]} alt="ss" />
+            <img
+              class="projectPromoImg"
+              src={`/content/${data.images[0]}`}
+              alt="ss"
+            />
           </div>
         </div>
         <Source links={data.links} />
@@ -48,7 +52,11 @@ const {
     <p class="addMargin">{data.description}</p>
     <div class="imageContent">
       <div class="imageWrapper">
-        <img class="projectPromoImg" src={data.images[0]} alt="ss" />
+        <img
+          class="projectPromoImg"
+          src={`/content/${data.images[0]}`}
+          alt="ss"
+        />
       </div>
     </div>
     <Tags tags={data.tags} />

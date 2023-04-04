@@ -9,6 +9,7 @@ import {
 } from "../stores/fragments";
 import Tile from "../tile/tile";
 import styles from "./projectSectionReact.module.scss";
+import { randomKey } from "../../utils/utilsFunc";
 interface ProjectsReactSectionProps {
   content: CollectionEntry<"games">[] | CollectionEntry<"projects">[];
 }
@@ -44,7 +45,7 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = (props) => {
           .filter(filterByDone)
           .filter(filterBySearch)
           .map((project) => (
-            <Tile key={Math.random()} data={project.data} slug={project.slug} />
+            <Tile key={randomKey()} data={project.data} slug={project.slug} />
           ))}
       </Section>
     </>

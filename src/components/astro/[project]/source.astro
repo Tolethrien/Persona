@@ -13,8 +13,8 @@ const test = links.source.length > 20 && links.source.slice(0, 10);
       <p>App</p>
       <img src="/techIcons/github.svg" alt="" />
     </div>
-    <a href={links.app} target="_blank" rel="noopener noreferrer"
-      >{links.app}
+    <a href={links.app} target="_blank" rel="noopener noreferrer">
+      {links.app}
     </a>
   </div>
   <div class="link">
@@ -89,7 +89,8 @@ const test = links.source.length > 20 && links.source.slice(0, 10);
       a {
         font-size: 1.2em;
         overflow-x: hidden;
-        max-width: 15rem;
+        white-space: nowrap;
+        max-width: 10rem;
         text-overflow: ellipsis;
         font-weight: 700;
         color: $primaryColor;
