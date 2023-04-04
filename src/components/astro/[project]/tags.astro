@@ -1,11 +1,9 @@
 ---
+import { capitalize } from "../../utils/utilsFunc";
 interface Props {
   tags: string[];
 }
 const { tags } = Astro.props;
-const capitalize = (tag: string) => {
-  return tag.charAt(0).toUpperCase() + tag.slice(1);
-};
 ---
 
 <div class="component">

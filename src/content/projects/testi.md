@@ -5,7 +5,7 @@ url: "/games"
 images: ["sd"]
 links: { source: "source", app: "app" }
 
-tags: ["tailwind", "sass"]
+tags: ["tailwind", "scss", "sass"]
 done: true
 ---
 
