@@ -39,6 +39,7 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = (props) => {
       <div className={styles.mobileTopBar}>
         <SearchBox />
         <Description />
+        <img className={styles.border} alt="" src="/appIcons/border.svg" />
       </div>
       <Section>
         {content

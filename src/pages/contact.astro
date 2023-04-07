@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { LINK_LINKEDIN } from "./index.astro";
+import { EMAIL_ADRESS, LINK_LINKEDIN } from "./index.astro";
 ---
 
 <Layout pageName="Contact">
@@ -11,8 +11,8 @@ import { LINK_LINKEDIN } from "./index.astro";
       copy the email address and send it yourself instead of using some built-in
       system on the site due to the lack of validation by any email operator.
     </p>
-    <p class="email">
-      pawel.grela90@gmail.com
+    <p class="email" id="getEmail">
+      {EMAIL_ADRESS}
       <img id="clipboard" src="/appIcons/clipboard.svg" />
     </p>
     <p class="textWithLink">
@@ -24,8 +24,9 @@ import { LINK_LINKEDIN } from "./index.astro";
 </Layout>
 <script>
   const ANIM_DURR = 2;
+  let email = document.getElementById("getEmail")?.innerText;
   document.getElementById("clipboard")?.addEventListener("click", () => {
-    navigator.clipboard.writeText("suka");
+    navigator.clipboard.writeText(email ?? "");
     const clipped = document.getElementById("clipped") as HTMLElement;
     clipped.style.animation = `moveUp ${ANIM_DURR}s`;
     setTimeout(() => {
@@ -143,12 +144,18 @@ import { LINK_LINKEDIN } from "./index.astro";
     @keyframes moveUp {
       0% {
         bottom: -5rem;
+        opacity: 0;
       }
       50% {
         bottom: 5rem;
+        opacity: 1;
+      }
+      70% {
+        opacity: 0.1;
       }
       100% {
         bottom: -5rem;
+        opacity: 0;
       }
     }
   }

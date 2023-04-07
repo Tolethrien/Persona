@@ -8,8 +8,8 @@ export default defineConfig({
   vite: {
     server: {
       port: 3000,
-      open: true
-    }
+      open: true,
+    },
   },
-  integrations: [react()]
+  integrations: [react()],
 });

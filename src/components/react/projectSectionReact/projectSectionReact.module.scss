@@ -3,11 +3,25 @@
 .mobileTopBar {
   width: 80%;
   padding-left: 1rem;
-  margin-block: 2rem 1rem;
+  margin-top: 1rem;
+  position: relative;
   & > * {
     margin-block: 0.5rem;
   }
   @media (min-width: $smallScreen) {
     display: none;
+  }
+  .border {
+    z-index: 10;
+    width: 40rem;
+    left: 0;
+    top: 100%;
+    position: absolute;
+    display: block;
+    margin: 0;
+    pointer-events: none;
+    @media (min-width: $midScreen) {
+      display: none;
+    }
   }
 }

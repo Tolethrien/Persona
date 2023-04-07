@@ -4,7 +4,6 @@ import { DisplayedWindowFragment } from "../stores/fragments";
 import styles from "./category.module.scss";
 interface CategoryProps {}
 const Category: React.FC<CategoryProps> = ({}) => {
-  // const { currentDisplay, setCurrentDisplay } = useContext(store)!;
   const [displayedWindow, setDisplayedWindow] = useFragment(
     DisplayedWindowFragment
   );

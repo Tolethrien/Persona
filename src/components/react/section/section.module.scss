@@ -6,6 +6,7 @@
   @media (max-width: $smallScreen) {
     flex-flow: row-reverse;
     overflow-x: hidden;
+    overflow-y: auto;
   }
   &::-webkit-scrollbar {
     width: 0px;
@@ -43,6 +44,7 @@
         width: 40rem;
         top: 14.1rem;
         position: fixed;
+        display: none;
       }
     }
     h2 {
@@ -64,6 +66,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
+        padding-bottom: 1rem;
       }
     }
   }
