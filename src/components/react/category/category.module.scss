@@ -11,7 +11,7 @@
   }
   @media (max-width: $smallScreen) {
     position: fixed;
-    top: 14rem;
+    top: 12rem;
     z-index: 10;
   }
   .searchboxWrap {
@@ -34,7 +34,7 @@
       height: 2rem;
       right: -4rem;
       top: 50%;
-      transform: translateY(-60%);
+      transform: translateY(-70%);
       pointer-events: none;
       @media (min-width: $smallScreen) {
         display: none;
