@@ -40,24 +40,24 @@
         display: none;
       }
     }
-  }
-  button {
-    background: none;
-    border: none;
-    font-size: 2.2rem;
-    font-weight: 600;
-    width: fit-content;
-    color: hsla(226, 19%, 60%, 1);
-    cursor: pointer;
-    p {
-      transition: 0.5s;
-      @media (max-width: $smallScreen) {
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        font-size: 1rem;
-      }
-      @media (max-width: $midScreen) and (min-width: $smallScreen) {
-        font-size: 1.5rem;
+    button {
+      background: none;
+      border: none;
+      font-size: 2.2rem;
+      font-weight: 600;
+      width: fit-content;
+      color: hsla(226, 19%, 60%, 1);
+      cursor: pointer;
+      p {
+        transition: 0.5s;
+        @media (max-width: $smallScreen) {
+          writing-mode: vertical-rl;
+          text-orientation: upright;
+          font-size: 1rem;
+        }
+        @media (max-width: $midScreen) and (min-width: $smallScreen) {
+          font-size: 1.5rem;
+        }
       }
     }
   }

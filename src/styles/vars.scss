@@ -1,6 +1,7 @@
 $smallScreen: 550px;
 $midScreen: 1000px;
 $maxScreen: 1800px;
+
 $appBackground: linear-gradient(
   109.61deg,
   hsl(216, 65%, 11%) 0%,
@@ -12,3 +13,8 @@ $branchesOpacity: 0.4;
 $desktopScrollTrackColor: hsla(215, 28%, 18%, 1);
 $desktopScrollThumbColor: hsla(225, 28%, 32%, 1);
 $desktopScrollThumbHoverColor: hsla(226, 19%, 60%, 1);
+$socialBarColor: hsla(226, 19%, 37%, 1);
+
+$transitionShort: 0.5s;
+$transitionMedium: 1s;
+$transitionLong: 2s;

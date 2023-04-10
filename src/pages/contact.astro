@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { EMAIL_ADRESS, LINK_LINKEDIN } from "./index.astro";
+import { EMAIL_ADRESS, LINK_LINKEDIN } from "../components/utils/links";
 ---
 
 <Layout pageName="Contact">
@@ -13,36 +13,43 @@ import { EMAIL_ADRESS, LINK_LINKEDIN } from "./index.astro";
     </p>
     <p class="email" id="getEmail">
       {EMAIL_ADRESS}
-      <img id="clipboard" src="/appIcons/clipboard.svg" />
+      <img id="clipboard" src="/appIcons/clipboard.svg" alt="" />
     </p>
     <p class="textWithLink">
       or you can contact me via
-      <a href={LINK_LINKEDIN}><img src="/techIcons/linked.svg" />LinkedIn</a>
+      <a href={LINK_LINKEDIN}
+        ><img src="/techIcons/linked.svg" alt="" />LinkedIn</a
+      >
     </p>
   </div>
   <div id="clipped">Copied to clipboard</div>
 </Layout>
+
 <script>
   const ANIM_DURR = 2;
   let email = document.getElementById("getEmail")?.innerText;
   document.getElementById("clipboard")?.addEventListener("click", () => {
     navigator.clipboard.writeText(email ?? "");
-    const clipped = document.getElementById("clipped") as HTMLElement;
-    clipped.style.animation = `moveUp ${ANIM_DURR}s`;
-    setTimeout(() => {
-      clipped.style.animation = "";
-    }, ANIM_DURR * 1000);
+    const clipped = document.getElementById("clipped");
+    if (clipped) {
+      clipped.style.animation = `moveUp ${ANIM_DURR}s`;
+      setTimeout(() => {
+        clipped.style.animation = "";
+      }, ANIM_DURR * 1000);
+    }
   });
 </script>
 <style lang="scss">
   @import "../styles/vars.scss";
+  @import "../styles/animations.scss";
 
   .component {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
     margin-top: 10rem;
     margin-inline: 10rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    transition: $transitionMedium;
     @media (max-width: $midScreen) {
       margin-inline: 5rem;
     }
@@ -88,15 +95,15 @@ import { EMAIL_ADRESS, LINK_LINKEDIN } from "./index.astro";
       cursor: pointer;
       filter: brightness(1.2);
       @media (max-width: $smallScreen) {
-        width: 1.5rem;
-        right: -2rem;
         top: 50%;
+        right: -2rem;
+        width: 1.5rem;
         transform: translateY(-75%);
       }
       @media (max-width: 300px) {
         top: 50%;
-        transform: translateY(-75%);
         left: 0rem;
+        transform: translateY(-75%);
       }
     }
     .textWithLink {
@@ -110,18 +117,14 @@ import { EMAIL_ADRESS, LINK_LINKEDIN } from "./index.astro";
         padding-right: 1rem;
         padding-bottom: 5rem;
       }
-
       a {
-        margin-left: 1rem;
         display: flex;
-        font-weight: 600;
         align-items: center;
+        gap: 0.2rem;
+        margin-left: 1rem;
+        font-weight: 600;
         text-decoration: none;
         color: $secondaryColor;
-        // border: 1px solid wheat;
-        // border-radius: 5px;
-        // padding: 0.5rem 1rem;
-        gap: 0.2rem;
         cursor: pointer;
         img {
           width: 2rem;
@@ -131,32 +134,15 @@ import { EMAIL_ADRESS, LINK_LINKEDIN } from "./index.astro";
   }
   #clipped {
     position: fixed;
-    color: white;
-    bottom: -5rem;
+    bottom: -20%;
     right: 50%;
+    color: white;
     font-size: 1.5rem;
     text-align: center;
-    transform: translateX(50%);
-    background: $appBackground;
-    filter: brightness(1.5);
+    padding: 0.5rem 1rem;
     border-radius: 5px;
-    padding: 0.2rem 1rem;
-    @keyframes moveUp {
-      0% {
-        bottom: -5rem;
-        opacity: 0;
-      }
-      50% {
-        bottom: 5rem;
-        opacity: 1;
-      }
-      70% {
-        opacity: 0.1;
-      }
-      100% {
-        bottom: -5rem;
-        opacity: 0;
-      }
-    }
+    background: $appBackground;
+    transform: translateX(50%);
+    filter: brightness(1.5);
   }
 </style>

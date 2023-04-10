@@ -1,17 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-export const LINK_GITHUB = "https://github.com/Tolethrien";
-export const LINK_LINKEDIN =
-  "https://www.linkedin.com/in/paweł-grela-762165234/";
-export const EMAIL_ADRESS = "pawe@gma.co";
+import { LINK_GITHUB, LINK_LINKEDIN } from "../components/utils/links";
 ---
 
-<Layout pageName="Main">
+<Layout pageName="Welcome">
   <div class="content">
-    <h2 class="heading">
-      Welcome to my Page
-      <img src="/appIcons/monke.svg" alt="" />
-    </h2>
+    <h2 class="heading">Welcome to my Page</h2>
     <p class="desc">
       i used this page as my personal part of internet to share my stuff with
       the world. You can find here some of my projects, my games or you can read
@@ -40,7 +34,7 @@ export const EMAIL_ADRESS = "pawe@gma.co";
   .content {
     margin-top: 10rem;
     margin-inline: 8rem 14rem;
-    transition: 1s;
+    transition: $transitionMedium;
     @media (max-width: $midScreen) {
       margin-inline: 6rem 8rem;
     }
@@ -53,8 +47,7 @@ export const EMAIL_ADRESS = "pawe@gma.co";
       font-weight: 800;
       color: $secondaryColor;
       position: relative;
-      transition: 1s;
-
+      transition: $transitionMedium;
       @media (max-width: $midScreen) {
         font-size: 2.5rem;
       }
@@ -62,18 +55,19 @@ export const EMAIL_ADRESS = "pawe@gma.co";
         font-size: 2rem;
         text-align: center;
       }
-      img {
-        position: absolute;
-        // filter: brightness(70%);
-        top: -2rem;
-        left: -0.65rem;
-        width: 3rem;
-        transition: 1s;
-        @media (min-width: $midScreen) {
-          top: -1.9rem;
-        }
-        @media (max-width: $smallScreen) {
-          display: none;
+      @media (min-width: $smallScreen) {
+        &::before {
+          content: "";
+          position: absolute;
+          top: -2rem;
+          left: -0.65rem;
+          width: 3rem;
+          height: 3rem;
+          background: url("/appIcons/monke.svg");
+          background-size: contain;
+          @media (min-width: $midScreen) {
+            top: -1.9rem;
+          }
         }
       }
     }
@@ -82,8 +76,7 @@ export const EMAIL_ADRESS = "pawe@gma.co";
       font-weight: 600;
       color: $primaryColor;
       padding-block: 2rem;
-      transition: 1s;
-
+      transition: $transitionMedium;
       @media (max-width: $midScreen) {
         font-size: 1.1rem;
         padding-block: 1rem;
@@ -97,17 +90,22 @@ export const EMAIL_ADRESS = "pawe@gma.co";
     }
   }
   .socialBar {
+    position: absolute;
+    bottom: 1rem;
+    right: 10rem;
     display: flex;
-    gap: 0.5rem;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    gap: 0.5rem;
     color: white;
-    bottom: 1rem;
-    right: 0;
-    right: 10rem;
-    transition: 1s;
-
+    transition: $transitionMedium;
+    @media (max-width: $smallScreen) {
+      right: 50%;
+      transform: translateX(50%);
+      background-color: $socialBarColor;
+      border-radius: 10px;
+      padding: 0.4rem 1rem;
+    }
     a {
       width: 2.5rem;
       height: 2.5rem;
@@ -116,15 +114,8 @@ export const EMAIL_ADRESS = "pawe@gma.co";
         height: 3rem;
       }
     }
-    @media (max-width: $smallScreen) {
-      right: 50%;
-      transform: translateX(50%);
-      background-color: hsla(226, 19%, 37%, 1);
-      border-radius: 10px;
-      padding: 0.2rem 1rem;
+    .icon {
+      height: 100%;
     }
-  }
-  .icon {
-    height: 100%;
   }
 </style>

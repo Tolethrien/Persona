@@ -1,6 +1,4 @@
 import type { CollectionEntry } from "astro:content";
-import Description from "../description/desciption";
-import SearchBox from "../searchbox/searchBox";
 import Section from "../section/section";
 import { useFragmentValue } from "../stateManager/fragment";
 import {
@@ -8,8 +6,8 @@ import {
   searchValueFragment,
 } from "../stores/fragments";
 import Tile from "../tile/tile";
-import styles from "./projectSectionReact.module.scss";
 import { randomKey } from "../../utils/utilsFunc";
+import MobileTopBar from "../mobileTopBar/mobileTopBar";
 interface ProjectsReactSectionProps {
   content: CollectionEntry<"games">[] | CollectionEntry<"projects">[];
 }
@@ -35,12 +33,7 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = (props) => {
 
   return (
     <>
-      {/* mobile bar pulled out of section */}
-      <div className={styles.mobileTopBar}>
-        <SearchBox />
-        <Description />
-        <img className={styles.border} alt="" src="/appIcons/border.svg" />
-      </div>
+      <MobileTopBar />
       <Section>
         {content
           .filter(filterByDone)

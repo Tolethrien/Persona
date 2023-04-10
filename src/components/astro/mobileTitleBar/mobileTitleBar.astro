@@ -1,0 +1,38 @@
+---
+interface Props {
+  position: "start" | "center";
+  spacing?: string; // padding-block in rem
+  title: string;
+}
+const { position, spacing = "0rem", title } = Astro.props;
+const inlineCut = position === "start" ? "1rem" : 0;
+---
+
+<h2>
+  {title}
+  <img alt="" src="/appIcons/border.svg" />
+</h2>
+
+<style lang="scss" define:vars={{ position, spacing, inlineCut }}>
+  @import "../../../styles/vars.scss";
+
+  h2 {
+    @media (min-width: $smallScreen) {
+      display: none;
+    }
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: var(--position);
+    color: $secondaryColor;
+    padding-block: var(--spacing);
+    padding-left: var(--inlineCut);
+    img {
+      position: absolute;
+      left: 0;
+      top: calc(100% - 0.2rem);
+      width: 40rem;
+      pointer-events: none;
+    }
+  }
+</style>

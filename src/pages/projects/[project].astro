@@ -5,6 +5,7 @@ import type { CollectionEntry } from "astro:content";
 import Tags from "../../components/astro/[project]/tags.astro";
 import Source from "../../components/astro/[project]/source.astro";
 import ImageModal from "../../components/astro/[project]/imagesModal.astro";
+import MobileTitleBar from "../../components/astro/mobileTitleBar/mobileTitleBar.astro";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("projects");
   return blogEntries.map((entry) => ({
@@ -45,9 +46,8 @@ const {
     </div>
   </div>
   <!-- ============================ -->
-  <h2 class="mobileTitle addMargin">{data.title}</h2>
+  <MobileTitleBar title={data.title} position={"start"} spacing="1rem" />
   <div class="mobileContent">
-    <img class="border" alt="" src="/appIcons/border.svg" />
     <Source links={data.links} />
     <p class="addMargin">{data.description}</p>
     <div class="imageContent">
@@ -74,12 +74,7 @@ const {
 </script>
 <style lang="scss">
   @import "../../styles/vars.scss";
-  .mobileTitle {
-    margin-block: 1rem;
-    @media (min-width: $smallScreen) {
-      display: none;
-    }
-  }
+
   .mobileContent {
     width: 100%;
     height: 100%;
@@ -88,13 +83,6 @@ const {
     overflow-y: scroll;
     @media (min-width: $smallScreen) {
       display: none;
-    }
-    .border {
-      position: fixed;
-      left: 0;
-      top: 10.5rem;
-      width: 40rem;
-      pointer-events: none;
     }
   }
 
@@ -167,9 +155,9 @@ const {
     }
   }
   .addMargin {
-    margin-left: 1rem;
+    padding-left: 1rem;
     @media (max-width: $smallScreen) {
-      margin-inline: 0.5rem;
+      padding-inline: 0.5rem;
     }
   }
   .imageContent {

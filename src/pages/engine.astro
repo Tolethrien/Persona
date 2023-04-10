@@ -1,10 +1,11 @@
 ---
+import MobileTitleBar from "../components/astro/mobileTitleBar/mobileTitleBar.astro";
 import Layout from "../layouts/Layout.astro";
 const generateImages = async (): Promise<string[]> => {
   const isDev = import.meta.env.DEV;
   type GlobReturnType = { default: string }[];
   let images: GlobReturnType = await Astro.glob(
-    "../../public/content/engineImages/*.png"
+    "../../public/content/engineImages/*"
   );
   let slicedimages: GlobReturnType =
     images.length > 4 ? images.slice(0, 4) : images;
@@ -16,8 +17,7 @@ const gameImages = await generateImages();
 ---
 
 <Layout pageName="Engine">
-  <h2 class="mobileTitle">Engine</h2>
-  <img class="border" alt="" src="/appIcons/border.svg" />
+  <MobileTitleBar position="center" title="Engine" spacing="1rem" />
   <div class="component">
     <div class="content">
       <h2>Engine</h2>
@@ -160,27 +160,6 @@ const gameImages = await generateImages();
       color: $primaryColor;
       @media (max-width: $smallScreen) {
         font-size: 1.2rem;
-      }
-    }
-    .mobileTitle {
-      font-size: 3rem;
-      font-weight: 700;
-      color: $secondaryColor;
-      padding-top: 1rem;
-      text-align: center;
-      padding-bottom: 0.6rem;
-      @media (min-width: $smallScreen) {
-        display: none;
-      }
-    }
-    .border {
-      position: fixed;
-      left: 0;
-      top: 10rem;
-      width: 40rem;
-      pointer-events: none;
-      @media (min-width: $smallScreen) {
-        display: none;
       }
     }
   </style>

@@ -19,9 +19,6 @@ const Section: React.FC<SectionProps> = ({ children }) => {
         <Description isDesktop />
         <div className={styles.childrenSlot}>{children}</div>
       </div>
-      {/* <button className={styles.goBack} onClick={scrollToTop}>
-        <div className={styles.triangle}></div>Go Back
-      </button> */}
     </section>
   );
 };
