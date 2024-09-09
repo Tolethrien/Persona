@@ -22,18 +22,35 @@ const gameImages = await generateImages();
     <div class="content">
       <h2>Engine</h2>
       <p>
-        Engine(not named yet) is designed to make simple games and 2D animations
-        in javascript. Due to it’s intended releases as standalone projects and
-        not in-browser based products it’s main focus is electron and google’s
-        V8 Engine. It uses canvas and context2DrenderingAPI.
+        Misa is a game engine focused on 2D graphics. Its primary goal is the
+        quick and simple creation of personal projects. It is mainly designed
+        for making simple 2D games that anyone can build, even without
+        specialized knowledge of game development.
+      </p>
+
+      <p>
+        Its purpose is to demonstrate that even with basic knowledge, one can
+        create interactive and engaging applications. It is written in
+        TypeScript to bridge the gap between Web Development and Game
+        Development.
       </p>
       <p>
-        Goal of this engine is to quickly create simple but not necessarily
-        small games (e.g. Pokemon or zelda games)
+        The core of Misa is based on Electron technology, which allows you to
+        export the finished project as a native application for PC systems,
+        enabling you to share your project with the world, whether through
+        itch.io or by publishing it on Steam.
       </p>
+
+      <p>
+        Ultimately, the engine is also intended to allow for the creation of
+        games that run directly in the browser.
+      </p>
+
       <div class="readMoreDesktop">
-        <p>You can read more about it on its Docs Page:</p>
-        <a>gameEngine.vercel.pl</a>
+        <p>You can read more on its website:</p>
+        <a href="https://game-engine-page.vercel.app/pl/" target="_blank"
+          >Misa's Website</a
+        >
       </div>
     </div>
     <div class="images">
@@ -41,8 +58,10 @@ const gameImages = await generateImages();
         {gameImages.map((src) => <img src={src} class="gameImage" />)}
       </div>
       <div class="readMoreMobile">
-        <p>You can read more about it on its Docs Page:</p>
-        <a>gameEngine.vercel.pl</a>
+        <p>You can read more on its website:</p>
+        <a href="https://game-engine-page.vercel.app/pl/" target="_blank"
+          >Misa's Website</a
+        >
       </div>
     </div>
   </div>

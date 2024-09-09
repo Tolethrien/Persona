@@ -2,12 +2,16 @@
 interface Props {
   images: string[];
 }
-const { images } = Astro.props;
+const { images } = Astro.props as Props;
 ---
 
 <dialog id="imagesModal">
   <div class="modalContent">
-    <button id="closeModal">X</button>
+    <div id="modalControlButtons">
+      <button id="closeModal">X</button>
+      <button id="goLeft">{"<"}</button>
+      <button id="goRight">{">"}</button>
+    </div>
     <p><span id="imageModalValue">1</span>/{images.length}</p>
     <div class="imageWrapper">
       <img id="projectCurrentImg" src={`/content/${images[0]}`} alt="ss" />
@@ -22,9 +26,50 @@ const { images } = Astro.props;
   const modal = document.getElementById("imagesModal") as HTMLDialogElement;
   const imageBar = document.getElementById("imagesBar");
   const imageNumber = document.getElementById("imageModalValue");
-  document.getElementById("closeModal")?.addEventListener("click", () => {
-    modal?.close();
-  });
+  const imageChildren = Array.from(
+    imageBar!.children as HTMLCollectionOf<HTMLImageElement>
+  );
+  document
+    .getElementById("modalControlButtons")
+    ?.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      const currentImage = document.getElementById(
+        "projectCurrentImg"
+      ) as HTMLImageElement;
+      const currentImgIndex = imageChildren.findIndex(
+        (e) => e.src === currentImage.src
+      );
+
+      switch (target.id) {
+        case "closeModal": {
+          modal?.close();
+          break;
+        }
+        case "goLeft": {
+          const prev = imageChildren[currentImgIndex - 1];
+          currentImage.src = prev ? prev.src : imageChildren.at(-1)!.src;
+          if (imageNumber)
+            imageNumber.innerText = String(
+              currentImgIndex === 0 ? imageChildren.length : currentImgIndex
+            );
+          break;
+        }
+        case "goRight": {
+          const next = imageChildren[currentImgIndex + 1];
+          currentImage.src = next ? next.src : imageChildren[0].src;
+          if (imageNumber)
+            imageNumber.innerText = String(
+              currentImgIndex + 1 === imageChildren.length
+                ? 1
+                : currentImgIndex + 2
+            );
+          break;
+        }
+        default:
+          break;
+      }
+    });
+
   imageBar?.addEventListener("click", (event: MouseEvent) => {
     let target = event.target as HTMLImageElement;
     let currentImage = document.getElementById(
@@ -70,19 +115,33 @@ const { images } = Astro.props;
         position: absolute;
         width: 3rem;
         height: 3rem;
-        align-self: flex-end;
-        background: $desktopScrollTrackColor;
         border: none;
-        border-radius: 0 0 0 5px;
         font-size: 2rem;
         color: $secondaryColor;
         box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
         cursor: pointer;
+      }
+      #closeModal {
+        right: 0;
+        background: $desktopScrollTrackColor;
+        border-radius: 0 0 0 5px;
 
         @media (max-width: $smallScreen) {
           right: 2.5%;
           border-radius: 0 5px 0 5px;
         }
+      }
+      #goLeft {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-100%);
+      }
+      #goRight {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-100%);
       }
       p {
         position: absolute;

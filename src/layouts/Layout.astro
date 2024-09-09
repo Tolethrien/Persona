@@ -33,9 +33,12 @@ const { pageName } = Astro.props;
       margin-inline: auto;
       height: 100%;
       overflow-x: hidden;
+      @media (min-width: $maxScreen) {
+        box-shadow: 0px 0px 30px 10px $secondaryColor;
+      }
 
       #bodyBranch {
-        position: fixed;
+        position: absolute;
         right: -3rem;
         top: 15rem;
         width: 25rem;
