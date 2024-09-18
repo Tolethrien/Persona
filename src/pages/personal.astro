@@ -4,52 +4,45 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout pageName="Persona">
   <div class="wrap">
-    <h2 class="center">Behind all of this!</h2>
     <section>
+      <h2 class="center">Behind all of this!</h2>
       <p>
         Well, hi! I'm not sure why you're here, and even less sure why you'd
-        want to read about me, but... if you do, who am I to stop you? So, hi
-        again! I'm Pavel, and this is my space that I created as part of my
-        portfolio and as a personal area to store my projects and ideas, and to
-        share them with my friends in a way that's more than just sending links.
+        want to read about me, but... if you do, who am I to stop you?
+      </p>
+      <p>
+        So, hi again! I'm Pavel, and this is my space that I created as part of
+        my portfolio and as a personal area to store my projects and ideas, and
+        to share them with my friends in a way that's more than just sending
+        links.
+      </p>
+      <p>
         As a person who loves to create, I've always been drawn to finding the
         perfect medium for me. I've tried everything, but none of them gave me
         the creative freedom I needed, as none of them fully reflected my
         vision. So, I try to combine different mediums, and programming has
-        allowed me to truly create what I want! I love storytelling, whether
-        through images, sounds, or plain narrative, and programming lets me
-        bring it all together into one great interactive adventure. Given all
-        this, it's no surprise that my goal became game development and creating
-        my own worlds. However, I don't limit myself to just that. I find joy
-        and excitement in making "something out of nothing," whether it's a
-        game, a program, or a website. Through my learning journey, I discovered
-        that my true passion and relaxation come not necessarily from creating
-        games, but from developing game engines. I love the idea of creating
-        tools that can express visions. Additionally, as someone who appreciates
-        knowledge and science, I enjoy the ability to replicate real-world
-        phenomena in the digital realm. If you'd like to stick around and check
-        out my projects, go ahead and WELCOME! :)
+        allowed me to truly create what I want!
       </p>
-    </section>
-    <section>
-      <h3>Why JS?</h3>
       <p>
-        That's a great question! Was it coincidence, or maybe just sheer luck?
-        When I first decided to try coding, I found it difficult to locate any
-        tutorials that interested me. I wasn't excited about the idea of
-        learning by simply adding two numbers and then subtracting them, just to
-        console.log a bunch of values. I knew that if I was going to do this, I
-        needed to find a way that was interesting to me! After days of
-        searching, I stumbled across a YouTube channel called The Coding Train.
-        Daniel was teaching JavaScript in a really interactive way—by creating
-        shapes on the screen, animating them, and making them collide. It was
-        just the fun and engaging experience I needed to spark my interest and
-        keep me on track! And that’s it! That’s why I chose JavaScript. A few
-        years later, here I am, and I would make the same choice all over again.
-        I’ve fallen in love with JS and the idea of developing for the web.
+        I love storytelling, whether through images, sounds, or plain narrative,
+        and programming lets me bring it all together into one great interactive
+        adventure. Given all this, it's no surprise that my goal became game
+        development and creating my own worlds. However, I don't limit myself to
+        just that. I find joy and excitement in making "something out of
+        nothing," whether it's a game, a program, or a website.
+      </p>
+      <p>
+        Through my learning journey, I discovered that my true passion and
+        relaxation come not necessarily from creating games, but from developing
+        game engines. I love the idea of creating tools that can express
+        visions. Additionally, as someone who appreciates knowledge and science,
+        I enjoy the ability to replicate real-world phenomena in the digital
+        realm. If you'd like to stick around and check out my projects, go ahead
+        and WELCOME! :)
       </p>
     </section>
-    <section>
+
+    <section class="whatNow">
       <h3 class="center">So what now?</h3>
       <p>
         Now, I just want to do what I love. I code both as my job and as my
@@ -64,15 +57,19 @@ import Layout from "../layouts/Layout.astro";
 
 <style lang="scss">
   @import "../styles/vars.scss";
+  p {
+    padding-block: 0.5rem;
+  }
   .wrap {
-    padding: 4rem 4rem;
+    padding: 4rem 20%;
     @media (max-width: $midScreen) {
-      padding: 3rem 3rem;
+      padding: 3rem 10%;
     }
     @media (max-width: $smallScreen) {
       padding: 2rem 2rem;
     }
   }
+
   p {
     color: $primaryColor;
     font-size: 1.2rem;
