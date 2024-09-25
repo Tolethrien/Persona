@@ -15,12 +15,13 @@ const Tile: React.FC<TileProps> = ({ data, slug }) => {
 
   const cuttedDesc = useMemo(() => {
     let isSpace =
-      data.description.length > CUT_LENGTH &&
-      data.description[CUT_LENGTH - 1] === " ";
-    return data.description.length > CUT_LENGTH
-      ? data.description.slice(0, isSpace ? CUT_LENGTH - 1 : CUT_LENGTH) + "..."
-      : data.description;
-  }, [data.description]);
+      data.shortDescription.length > CUT_LENGTH &&
+      data.shortDescription[CUT_LENGTH - 1] === " ";
+    return data.shortDescription.length > CUT_LENGTH
+      ? data.shortDescription.slice(0, isSpace ? CUT_LENGTH - 1 : CUT_LENGTH) +
+          "..."
+      : data.shortDescription;
+  }, [data.shortDescription]);
 
   const filterByTags = (e: string) =>
     e.toLowerCase().includes(searchValue.toLowerCase().slice(1));

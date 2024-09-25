@@ -1,8 +1,8 @@
 ---
 title: "Enigma"
-tags: ["Next", "Supabase", "PWA", "Typescript"]
+tags: ["Next", "Supabase", "PWA", "Typescript", "Tailwind"]
 done: true
-description: "Enigma is a password manager application that I built due to a lack of trust in widely available apps — after all, no one will attack an application they don't know exists. What sets it apart from others is the use of steganography as a method for storing cryptographic keys. A badge generated for each user allows secure storage anywhere in the cloud without raising suspicion about what it actually is. Once uploaded back into the app, it enables the decryption of sensitive data!"
+shortDescription: "password manager application with steganography!"
 images:
   [
     "Enigma/1.jpg",
@@ -16,6 +16,11 @@ images:
 links:
   {
     source: "https://github.com/Tolethrien/enigma",
-    app: "https://enigma-ashy.vercel.app",
+    app: "https://enigma-demo.vercel.app",
   }
 ---
+
+Enigma is a password manager application that I built due to a lack of trust in widely available apps — after all, no one will attack an application they don't know exists.<br/>
+<br/>
+What sets it apart from others is the use of steganography as a method for storing cryptographic keys. A badge generated for each user allows secure storage anywhere in the cloud without raising suspicion about what it actually is.<br/>
+Once uploaded back into the app, it enables the decryption of sensitive data!"

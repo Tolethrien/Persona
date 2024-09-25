@@ -2,8 +2,7 @@
 title: "New Timer"
 tags: ["React", "firebase", "PWA", "Typescript"]
 done: true
-description: "This App is like your TODO board but it can also messure time you spend on tasks. Main goal of it is to assess how much you differ from the predicted time and the real time on every single task and then evaluate on what part's of your project you stuggle the most"
-
+shortDescription: "like your TODO board but it can also messure time."
 images:
   [
     "Timer/1.jpg",
@@ -15,7 +14,10 @@ images:
   ]
 links:
   {
-    source: "https://github.com/Tolethrien/Persona/tree/develop",
-    app: "https://newtimer-git-develop-tolethrien.vercel.app",
+    source: "https://github.com/Tolethrien/New-Timer",
+    app: "https://newtimer.vercel.app/",
   }
 ---
+
+This App is like your TODO board but it can also messure time you spend on tasks.<br/>
+Main goal of it is to assess how much you differ from the predicted time and the real time on every single task and then evaluate on what part's of your project you stuggle the most.

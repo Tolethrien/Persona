@@ -3,7 +3,7 @@ import { capitalize } from "../../utils/utilsFunc";
 interface Props {
   tags: string[];
 }
-const { tags } = Astro.props;
+const { tags } = Astro.props as Props;
 ---
 
 <div class="component">

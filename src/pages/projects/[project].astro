@@ -17,8 +17,9 @@ interface Props {
   entry: CollectionEntry<"projects">;
 }
 const {
-  entry: { data },
-} = Astro.props;
+  entry: { data, render },
+} = Astro.props as Props;
+const { Content } = await render();
 ---
 
 <Layout pageName={data.title}>
@@ -29,7 +30,7 @@ const {
     <div class="main">
       <div class="content">
         <h2 class="addMargin">{data.title}</h2>
-        <p class="addMargin">{data.description}</p>
+        <div class="addMargin mdContent"><Content /></div>
       </div>
       <div class="other">
         <div class="imageContent">
@@ -49,7 +50,7 @@ const {
   <MobileTitleBar title={data.title} position={"start"} spacing="1rem" />
   <div class="mobileContent">
     <Source links={data.links} />
-    <p class="addMargin">{data.description}</p>
+    <div class="addMargin mdContent"><Content /></div>
     <div class="imageContent">
       <div class="imageWrapper">
         <img
@@ -85,7 +86,14 @@ const {
       display: none;
     }
   }
-
+  .mdContent {
+    font-size: 1.5em;
+    color: $primaryColor;
+    padding: 1rem;
+    @media (max-width: $smallScreen) {
+      padding: 0;
+    }
+  }
   .desktop {
     display: flex;
     flex-grow: 1;
