@@ -8,6 +8,8 @@ import {
 import Tile from "../tile/tile";
 import { randomKey } from "../../utils/utilsFunc";
 import MobileTopBar from "../mobileTopBar/mobileTopBar";
+import styles from "./projectSectionReact.module.scss";
+
 interface ProjectsReactSectionProps {
   content: CollectionEntry<"games">[] | CollectionEntry<"projects">[];
 }
@@ -30,17 +32,21 @@ const ProjectsReactSection: React.FC<ProjectsReactSectionProps> = (props) => {
     else
       return value.data.title.toLowerCase().includes(searchValue.toLowerCase());
   };
-
+  const tiles = content.filter(filterByDone).filter(filterBySearch);
   return (
     <>
       <MobileTopBar />
       <Section>
-        {content
-          .filter(filterByDone)
-          .filter(filterBySearch)
-          .map((project) => (
-            <Tile key={randomKey()} data={project.data} slug={project.slug} />
-          ))}
+        {tiles.length === 0 ? (
+          <p className={styles.noProjectFound}>{"Nothing to show yet :<"}</p>
+        ) : (
+          content
+            .filter(filterByDone)
+            .filter(filterBySearch)
+            .map((project) => (
+              <Tile key={randomKey()} data={project.data} slug={project.slug} />
+            ))
+        )}
       </Section>
     </>
   );

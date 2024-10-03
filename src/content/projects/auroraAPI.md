@@ -22,4 +22,4 @@ links:
 ---
 
 AuroraAPI is a graphics renderer based on WebGPU, focused on 2D graphics. It is being developed for the Misa game engine, but its modular design allows it to be used independently in other projects.<br>
-Aurora offers a set of functions that enable building a custom renderer from scratch, as well as a URP (Universal Render Pipeline), which provides an easy way to start working with a pre-built system.
+Aurora provides a set of functions for building a custom renderer from scratch, as well as a Universal Render Pipeline (URP), which offers an easy way to get started with a pre-built system.

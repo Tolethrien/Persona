@@ -2,7 +2,7 @@
 title: "New Timer"
 tags: ["React", "firebase", "PWA", "Typescript"]
 done: true
-shortDescription: "like your TODO board but it can also messure time."
+shortDescription: "Like your classic TODO board, but it can also measure time."
 images:
   [
     "Timer/1.jpg",
@@ -19,5 +19,6 @@ links:
   }
 ---
 
-This App is like your TODO board but it can also messure time you spend on tasks.<br/>
-Main goal of it is to assess how much you differ from the predicted time and the real time on every single task and then evaluate on what part's of your project you stuggle the most.
+This app is like your classic TODO board, but it also tracks the time you spend on tasks.<br/>
+<br/>
+Its main goal is to assess how much your predicted time differs from the actual time spent on each task, helping you evaluate which parts of your project you struggle with the most.

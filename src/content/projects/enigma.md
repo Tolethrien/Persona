@@ -2,7 +2,7 @@
 title: "Enigma"
 tags: ["Next", "Supabase", "PWA", "Typescript", "Tailwind"]
 done: true
-shortDescription: "password manager application with steganography!"
+shortDescription: "Password manager application with steganography!"
 images:
   [
     "Enigma/1.jpg",
@@ -20,7 +20,7 @@ links:
   }
 ---
 
-Enigma is a password manager application that I built due to a lack of trust in widely available apps — after all, no one will attack an application they don't know exists.<br/>
+Enigma is a password manager application I built due to a lack of trust in widely available apps — after all, no one is likely to attack an application they don’t know exists.<br/>
 <br/>
-What sets it apart from others is the use of steganography as a method for storing cryptographic keys. A badge generated for each user allows secure storage anywhere in the cloud without raising suspicion about what it actually is.<br/>
-Once uploaded back into the app, it enables the decryption of sensitive data!"
+What sets it apart is the use of steganography to store cryptographic keys. A unique badge generated for each user allows secure storage in the cloud without raising any suspicion about its true purpose.<br/>
+When uploaded back into the app, this badge enables the decryption of sensitive data.
