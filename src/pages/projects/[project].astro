@@ -174,22 +174,28 @@ const { Content } = await render();
   .imageContent {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     flex-grow: 1;
-
+    
     .imageWrapper {
       position: relative;
       width: 10rem;
       height: 10rem;
       cursor: pointer;
       transition: 1s;
+      margin-bottom: 2rem;
+
       // transform: rotate(-2deg);
       @media (min-width: $midScreen) {
+        margin-bottom: 5rem;
         width: 12rem;
         height: 12rem;
         transform: rotate(-1deg);
       }
       @media (max-width: $smallScreen) {
         margin-top: 2rem;
+      margin-bottom: 0;
+
       }
       img {
         width: 100%;
